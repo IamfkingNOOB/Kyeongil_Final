@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private readonly int _attack_B_ToHash = Animator.StringToHash("Attack_B");
     private readonly int _attack_C_ToHash = Animator.StringToHash("Attack_C");
     private readonly int _attack_Ultra_ToHash = Animator.StringToHash("Attack_Ultra");
-    private int attackIndex = 0;
+    private int attackType = 0;
 
     [Header("Weapons")]
     [SerializeField] private GameObject _weapon_A;
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         if (callbackContext.performed)
         {
-            switch (attackIndex)
+            switch (attackType)
             {
                 case 0:
                     _animator.SetTrigger(_attack_A_ToHash);
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
             // 짧게 눌렀을 경우, 일반 공격의 형태를 바꾼다.
             if (callbackContext.interaction is PressInteraction)
             {
-                attackIndex = ++attackIndex % 3;
+                attackType = ++attackType % 3;
             }
         }
     }
