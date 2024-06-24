@@ -1,0 +1,54 @@
+{
+    "name": "Player Input Actions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "1122bcf0-842d-4a62-8eee-ca87cef6c500",
+            "actions": [
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "190997f0-71fb-4cb4-89e5-e3c57f173de4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ultimate",
+                    "type": "Button",
+                    "id": "57c937d9-28d4-42e4-97e5-a5b6bfb840fb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "af8eec91-f369-4d8c-b7ac-ad5cf4e64a34",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "585f6ef7-4da9-4492-a725-da6be66fc3c8",
+                    "path": "<Keyboard>/i",
+                    "interactions": "Hold(duration=0.4,pressPoint=0.1),Press(pressPoint=0.1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ultimate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
