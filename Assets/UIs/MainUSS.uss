@@ -1,0 +1,29 @@
+.main-ui-button {
+    background-image: url("project://database/Assets/Sprites/SpriteAtlasTexture-MainPageV2%20(Group%200)-1024x1024-fmt4.png?fileID=-1761466&guid=723713ab2808de649a0c58dca81ba3f9&type=3#SpriteAtlasTexture-MainPageV2 (Group 0)-1024x1024-fmt4_25");
+    -unity-background-scale-mode: scale-to-fit;
+    background-color: rgba(188, 188, 188, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    width: 166px;
+    height: 145px;
+    max-width: 40%;
+    max-height: 100%;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    padding-top: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    padding-left: 2%;
+}
+
+.main-ui-button:active {
+    transition-property: -unity-background-image-tint-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out-cubic;
+    transition-delay: 0s;
+    -unity-background-image-tint-color: rgb(130, 130, 130);
+}
