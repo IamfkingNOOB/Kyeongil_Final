@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -7,16 +6,27 @@ using UnityEngine;
 public class MainCharacter : MonoBehaviour
 {
     // 메인 화면에 등장하는 캐릭터
-    private BasePlayerController _mainCharacter;
+    [SerializeField] private BaseCharacterInfo _mainCharacter;
 
-    public Dictionary<int, int> a = new Dictionary<int, int>(); 
-
-    private void Awake()
+    // 게임 시작 시,
+    private void Start()
     {
-        // 캐릭터 목록에서 무작위로 하나를 골라, 메인 화면의 캐릭터로 설정한다.
-        int characterCount = Random.Range(0, CharacterDictionary.Instance.characterDictionary.Count);
-        _mainCharacter = CharacterDictionary.Instance.characterDictionary[(ValkyrieName)characterCount];
+        // 기존에 등록된 메인 캐릭터가 있는지 검사합니다.
+        int index = PlayerPrefsList.Instance._mainCharacterIndex;
 
+        if (index == -1) // 등록된 매인 캐릭터가 없다면,
+        {
+            // 등록된 캐릭터의 목록 중 무작위로 하나를 고릅니다.
+            index = Random.Range(0, CharacterDictionary.Instance.characterDictionary.Count);
+        }
 
+        // 선택된 캐릭터를 메인 캐릭터로 설정합니다.
+        _mainCharacter = CharacterDictionary.Instance.characterDictionary[(ValkyrieName)index];
+    }
+
+    // 메인 캐릭터를 설정합니다.
+    public void SetMainCharacter(ValkyrieName valkyrieName)
+    {
+        _mainCharacter = CharacterDictionary.Instance.characterDictionary[valkyrieName];
     }
 }

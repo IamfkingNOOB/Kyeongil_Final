@@ -30,6 +30,8 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-434608317-0
         - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1637496546-0
         - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-126695762-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-994351806-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1203340158-0
         values:
         - colorIndex: 4
           iconNameOrGuid: Canvas Icon
@@ -53,5 +55,9 @@ MonoBehaviour:
           iconNameOrGuid: 
         - colorIndex: 0
           iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 2
+          iconNameOrGuid: cs Script Icon
         - colorIndex: 8
+          iconNameOrGuid: Folder Icon
+        - colorIndex: 6
           iconNameOrGuid: cs Script Icon

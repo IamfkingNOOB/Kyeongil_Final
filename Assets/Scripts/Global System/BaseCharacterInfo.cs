@@ -27,6 +27,14 @@ public class BaseCharacterInfo : MonoBehaviour
     [SerializeField] private Stigma _stigma02;
     [SerializeField] private Stigma _stigma03;
 
+    [Header("Character Portraits")]
+    [SerializeField] private Sprite _portraitSprite;
+
+    public ValkyrieName GetCharacterName()
+    {
+        return _characterName;
+    }
+
     // 스킬과 관련하여, DataDriven 기술을 사용해 보자.
 
 
