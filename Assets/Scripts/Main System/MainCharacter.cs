@@ -21,16 +21,16 @@ public class MainCharacter : MonoBehaviour
         }
 
         // 선택된 캐릭터를 메인 캐릭터로 설정합니다.
-        SetMainCharacter((ValkyrieName)index);
+        //SetMainCharacter((Valkyrie)index);
 
         // _mainCharacter = CharacterDictionary.Instance.characterDictionary[(ValkyrieName)index];
     }
 
     // 메인 캐릭터를 설정합니다.
-    public void SetMainCharacter(ValkyrieName valkyrieName)
-    {
-        _mainCharacter = CharacterDictionary.Instance.characterDictionary[valkyrieName];
+    //public void SetMainCharacter(ValkyrieName valkyrieName)
+    //{
+    //    _mainCharacter = CharacterDictionary.Instance.characterDictionary[valkyrieName];
 
-        Instantiate(_mainCharacter.gameObject, transform);
-    }
+    //    Instantiate(_mainCharacter.gameObject, transform);
+    //}
 }

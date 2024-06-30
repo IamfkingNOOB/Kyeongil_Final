@@ -15,10 +15,10 @@ public class CharacterLoader : MonoBehaviour
         CharacterDictionary.Instance.characterDictionary.Clear();
 
         // 등록한 캐릭터의 정보들을 순회하면서, 캐릭터 목록에 등록합니다.
-        foreach (BaseCharacterInfo character in characterArray)
-        {
-            CharacterDictionary.Instance.characterDictionary.Add(character.GetCharacterName(), character);
-        }
+        //foreach (BaseCharacterInfo character in characterArray)
+        //{
+        //    CharacterDictionary.Instance.characterDictionary.Add(character.GetCharacterName(), character);
+        //}
 
         // 등록을 마친 후, 이 클래스가 등록된 게임 오브젝트를 삭제합니다.
         Destroy(gameObject);
