@@ -34,4 +34,13 @@ public class DataMapper
         public string Special_Attack { get; set; } // 특수 공격
         public string Description { get; set; } // 설명문
     }
+
+    public class Type
+    {
+        public string Type_ID { get; set; }
+        public string Name { get; set; }
+        public string Advantage { get; set; }
+        public string Disadvantage { get; set; }
+        public string IconPath { get; set; }
+    }
 }
