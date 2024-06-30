@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 
 /// <summary>
 /// 게임에서 사용할 수많은 데이터들을 정리해 둔 외부 파일로부터, 필요한 데이터들을 알맞게 추출하여 보관하기 위한 클래스입니다.
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 public class DataMapper
 {
     /// <summary>
-    /// 발키리(캐릭터)의 데이터 목록
+    /// 발키리(캐릭터)에 대한 데이터
     /// </summary>
     public class Valkyrie
     {
@@ -35,20 +36,52 @@ public class DataMapper
         public string Description { get; set; } // 설명문
     }
 
+    /// <summary>
+    /// 발키리가 가지는 속성에 대한 데이터
+    /// </summary>
     public class Type
     {
-        public string Type_ID { get; set; }
-        public string Name { get; set; }
-        public string Advantage { get; set; }
-        public string Disadvantage { get; set; }
-        public string IconPath { get; set; }
+        public string Type_ID { get; set; } // 식별자
+        public string Name { get; set; } // 이름
+        public string Advantage { get; set; } // 상성
+        public string Disadvantage { get; set; } // 역상성
+        public string IconPath { get; set; } // 아이콘 이미지 경로
     }
 
+    /// <summary>
+    /// 발키리가 가지는 특성에 대한 데이터
+    /// </summary>
     public class Trait
     {
-        public string Trait_ID { get; set; }
-        public string Name { get; set; }
-        public string IconPath { get; set; }
-        public string Description { get; set; }
+        public string Trait_ID { get; set; } // 식별자
+        public string Name { get; set; } // 이름
+        public string IconPath { get; set; } // 아이콘 이미지 경로
+        public string Description { get; set; } // 설명문
+    }
+
+    /// <summary>
+    /// 무기에 대한 데이터
+    /// </summary>
+    public class Weapon
+    {
+        public string Weapon_ID { get; set; } // 식별자
+        public string Name { get; set; } // 이름
+        public int Rank { get; set; } // 랭크
+        public int Level { get; set; } // 레벨
+        public int ATK { get; set; } // 공격력
+        public int CRT { get; set; } // 회심
+        public List<string> Skills { get; set; } // 무기 스킬
+    }
+
+    /// <summary>
+    /// 무기가 가지는 스킬에 대한 데이터
+    /// </summary>
+    public class WeaponSkill
+    {
+        public string WeaponSkill_ID { get; set; } // 식별자
+        public string Name { get; set; } // 이름
+        public int SP { get; set; } // SP 소모량
+        public int CD { get; set; } // 재사용 대기시간
+        public string Description { get; set; } // 설명문
     }
 }
