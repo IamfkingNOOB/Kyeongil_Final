@@ -43,4 +43,12 @@ public class DataMapper
         public string Disadvantage { get; set; }
         public string IconPath { get; set; }
     }
+
+    public class Trait
+    {
+        public string Trait_ID { get; set; }
+        public string Name { get; set; }
+        public string IconPath { get; set; }
+        public string Description { get; set; }
+    }
 }
