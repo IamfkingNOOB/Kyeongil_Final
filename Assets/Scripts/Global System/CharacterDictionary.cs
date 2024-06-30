@@ -5,5 +5,5 @@ using System.Collections.Generic;
 /// </summary>
 public class CharacterDictionary : Singleton<CharacterDictionary>
 {
-    public Dictionary<ValkyrieName, BaseCharacterInfo> characterDictionary { get; set; } = new Dictionary<ValkyrieName, BaseCharacterInfo>();
+    public Dictionary<Valkyrie, BaseCharacterInfo> characterDictionary { get; set; } = new Dictionary<Valkyrie, BaseCharacterInfo>();
 }
