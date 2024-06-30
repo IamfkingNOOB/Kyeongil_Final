@@ -84,4 +84,21 @@ public class DataMapper
         public int CD { get; set; } // 재사용 대기시간
         public string Description { get; set; } // 설명문
     }
+
+    public class Stigmata
+    {
+        public string Stigmata_ID { get; set; }
+        public string Name { get; set; }
+        public string Position { get; set; }
+        public int Rank { get; set; }
+        public int Level { get; set; }
+        public int HP { get; set; }
+        public int SP { get; set; }
+        public int ATK { get; set; }
+        public int DEF { get; set; }
+        public int CRT { get; set; }
+        public string Skill { get; set; }
+        public string SetBonuses_2Set { get; set; }
+        public string SetBonuses_3Set { get; set; }
+    }
 }
