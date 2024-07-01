@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// 발키리(캐릭터)에 대한 데이터
@@ -28,6 +29,8 @@ public class Valkyrie
     public string Ultimate { get; set; } // 필살기
     public string Special_Attack { get; set; } // 특수 공격
     public string Description { get; set; } // 설명문
+
+    public GameObject PrefabModel { get; set; } // 프리팹 모델; 경로를 전달받아 등록합니다.
 }
 
 /// <summary>
