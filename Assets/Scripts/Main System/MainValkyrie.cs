@@ -66,11 +66,14 @@ public class MainValkyrie : MonoBehaviour
     /// <param name="valkyrie">메인으로 지정할 발키리</param>
     public void SetMainValkyrie(Valkyrie valkyrie)
     {
-        // 우선, 이미 지정되어 있는 메인 발키리를 제거합니다.
-        DestroyChildren(GetComponentsInChildren<Transform>());
+        // 우선, 이미 지정되어 있는 메인 발키리를 제거합니다. (매개변수로 자식을 보내되, 자기 자신인 부모는 제외합니다.)
+        DestroyChildren(GetComponentsInChildren<Transform>().Skip(1).ToArray());
 
         // 매개변수로 받은 발키리를 메인 발키리로 지정합니다.
         Instantiate(valkyrie.PrefabModel, transform);
+
+        // 이 값을 기억시켜, 게임을 다시 실행했을 때 마지막으로 지정한 발키리를 자동으로 선택하도록 합니다.
+        PlayerPrefs.SetString("MainValkyrie", valkyrie.Valkyrie_ID);
     }
 
     /// <summary>
@@ -79,8 +82,10 @@ public class MainValkyrie : MonoBehaviour
     /// <param name="children">자식 목록</param>
     private void DestroyChildren(Transform[] children)
     {
+        // 자식을 순회하면서,
         foreach (Transform child in children)
         {
+            // 자신을 파괴합니다.
             Destroy(child.gameObject);
         }
     }

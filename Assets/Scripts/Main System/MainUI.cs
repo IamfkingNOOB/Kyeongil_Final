@@ -26,8 +26,73 @@ public class MainUI : MonoBehaviour
         root = GetComponent<UIDocument>().rootVisualElement;
 
         // Q<>("_name")으로 접근할 수 있다.
+        _valkyrieButton = root.Q<Button>("Valkyrie_Button");
         _battleButton = root.Q<Button>("Battle_Button");
-        _battleButton.clicked += () => Debug.Log("Battle Button Clicked!");
+        _equipmentButton = root.Q<Button>("Equipment_Button");
+        _gachaButton = root.Q<Button>("Gacha_Button");
+
+        // .clicked += / RegisterCallback()으로 클릭 이벤트를 등록할 수 있다.
+        //_battleButton.clicked += () => Debug.Log("Battle Button Clicked!");
+        //_battleButton.RegisterCallback((ClickEvent evt) => Debug.Log("Battle Button Clicked!"));
+
+        Debug.Log("Awake!");
+    }
+
+    // 활성화될 때,
+    private void OnEnable()
+    {
+        // 버튼에 이벤트를 등록합니다.
+        Debug.Log("OnEnable!");
+        RegisterClickEvent();
+    }
+
+    // 비활성화될 때,
+    private void OnDisable()
+    {
+        // 버튼에 이벤트를 해제합니다.
+        UnregisterClickEvent();
+    }
+
+    // 버튼에 클릭 이벤트를 등록합니다.
+    private void RegisterClickEvent()
+    {
+        _valkyrieButton.clicked += OnLoadValkyrieSystem;
+        _battleButton.clicked += OnLoadBattleSystem;
+        _equipmentButton.clicked += OnLoadEquipmentSystem;
+        _gachaButton.clicked += OnLoadGachaSystem;
+    }
+
+    // 버튼에 클릭 이벤트를 해제합니다.
+    private void UnregisterClickEvent()
+    {
+        _valkyrieButton.clicked -= OnLoadValkyrieSystem;
+        _battleButton.clicked -= OnLoadBattleSystem;
+        _equipmentButton.clicked -= OnLoadEquipmentSystem;
+        _gachaButton.clicked -= OnLoadGachaSystem;
+    }
+
+    // 발키리 버튼 이벤트
+    private void OnLoadValkyrieSystem()
+    {
+        Debug.Log("Valkyrie Button is Clicked!");
+    }
+
+    // 출격 버튼 이벤트
+    private void OnLoadBattleSystem()
+    {
+        Debug.Log("Battle Button is Clicked!");
+    }
+
+    // 장비 버튼 이벤트
+    private void OnLoadEquipmentSystem()
+    {
+        Debug.Log("Equipment Button is Clicked!");
+    }
+
+    // 보급 버튼 이벤트
+    private void OnLoadGachaSystem()
+    {
+        Debug.Log("Gacha Button is Clicked!");
     }
 
     #endregion 유니티 생명 주기 함수

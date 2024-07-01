@@ -11,7 +11,7 @@ public class DataManager : MonoBehaviour
     public static DataManager Instance { get; private set; }
 
     // 외부 파일에 접근하기 위한 경로
-    private readonly string _dataRootPath = "C:/...";
+    private readonly string _dataRootPath = "C:/Users/KGA/Desktop/Unity_Projects/Kyeongil_Final/Assets/Databases";
 
     public Dictionary<string, Valkyrie> ValkyrieList { get; private set; }
     public Dictionary<string, Type> TypeList { get; private set; }
@@ -39,12 +39,12 @@ public class DataManager : MonoBehaviour
 
     private void ReadValkyrieTable(string tableName)
     {
-        // 발키리 데이터를 저장할 목록을 생성한다.
+        // 발키리 데이터를 저장할 목록을 생성합니다.
         ValkyrieList = new Dictionary<string, Valkyrie>();
 
-        // XML 파일을 읽어들이기 위한 작업을 수행한다.
+        // XML 파일을 읽어들이기 위한 작업을 수행합니다.
         XDocument xDocument = XDocument.Load($"{_dataRootPath}/{tableName}.xml");
-        IEnumerable<XElement> dataElements = xDocument.Descendants();
+        IEnumerable<XElement> dataElements = xDocument.Descendants("data");
 
         // 파일의 데이터를 순회하면서,
         foreach (XElement dataElement in dataElements)
@@ -52,7 +52,7 @@ public class DataManager : MonoBehaviour
             // 발키리 클래스를 하나 생성하고,
             Valkyrie valkyrie = new Valkyrie();
 
-            // 클래스에 필요한 데이터를 불러와 저장한다.
+            // 클래스에 필요한 데이터를 불러와 저장합니다.
             // Stat
             valkyrie.Valkyrie_ID = dataElement.Attribute(nameof(valkyrie.Valkyrie_ID)).Value;
             valkyrie.Name = dataElement.Attribute(nameof(valkyrie.Name)).Value;
@@ -75,21 +75,25 @@ public class DataManager : MonoBehaviour
             valkyrie.LeaderSkill = dataElement.Attribute(nameof(valkyrie.LeaderSkill)).Value;
             valkyrie.Passive = dataElement.Attribute(nameof(valkyrie.Passive)).Value;
             valkyrie.Evasion = dataElement.Attribute(nameof(valkyrie.Evasion)).Value;
-            valkyrie.WeaponSkill = dataElement.Attribute(nameof(valkyrie.WeaponSkill)).Value;
+            valkyrie.WeaponSkills = dataElement.Attribute(nameof(valkyrie.WeaponSkills)).Value;
             valkyrie.Basic_ATK = dataElement.Attribute(nameof(valkyrie.Basic_ATK)).Value;
             valkyrie.Ultimate = dataElement.Attribute(nameof(valkyrie.Ultimate)).Value;
             valkyrie.Special_Attack = dataElement.Attribute(nameof(valkyrie.Special_Attack)).Value;
             valkyrie.Description = dataElement.Attribute(nameof(valkyrie.Description)).Value;
 
+            // Model(FBX)
+            string prefabPath = dataElement.Attribute(nameof(valkyrie.PrefabModel)).Value;
+            valkyrie.PrefabModel = Resources.Load<GameObject>(prefabPath);
+
             // 하나의 데이터에 값이 여러 개일 경우
-            string traitList = dataElement.Attribute(nameof(valkyrie.Traits)).Value;
+            string traitList = dataElement.Attribute(nameof(valkyrie.Trait)).Value;
             if (!string.IsNullOrEmpty(traitList))
             {
                 string[] traits = traitList.Trim().Split(',');
 
                 foreach (string trait in traits)
                 {
-                    valkyrie.Traits.Add(trait);
+                    valkyrie.Trait.Add(trait);
                 }
             }
 

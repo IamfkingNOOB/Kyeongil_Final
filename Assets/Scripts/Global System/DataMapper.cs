@@ -11,7 +11,7 @@ public class Valkyrie
     public string Rank { get; set; } // 랭크
     public int Level { get; set; } // 레벨
     public string Type { get; set; } // 속성
-    public List<string> Traits { get; set; } // 특성
+    public List<string> Trait { get; set; } = new List<string>(); // 특성
     public int HP { get; set; } // 체력
     public int SP { get; set; } // SP(스킬 포인트)
     public int ATK { get; set; } // 공격력
@@ -24,7 +24,7 @@ public class Valkyrie
     public string LeaderSkill { get; set; } // 리더 스킬
     public string Passive { get; set; } // 패시브
     public string Evasion { get; set; } // 회피
-    public string WeaponSkill { get; set; } // 무기 스킬
+    public string WeaponSkills { get; set; } // 무기 스킬
     public string Basic_ATK { get; set; } // 기본 공격
     public string Ultimate { get; set; } // 필살기
     public string Special_Attack { get; set; } // 특수 공격
