@@ -1,16 +1,16 @@
-using System;
 using UnityEngine;
 
 /// <summary>
-/// 플레이어의 각 상태에 대한 행동을 구체화하기 위한 인터페이스입니다. (상태 패턴)
+/// 플레이어를 상태(State) 패턴으로 구현하기 위한 인터페이스입니다.
 /// </summary>
 public interface IPlayerState
 {
+    // 상태의 전환에 따른 함수들
     void Enter(); // 상태 진입 시
     void Execute(); // 상태 유지 시
     void Exit(); // 상태 탈출 시
 
-    // Input Systems
+    // 입력 시스템(Input System)에 따른 함수들
     void OnMove(Vector2 inputVector);
     void OnEvade();
     void OnAttack();
@@ -23,7 +23,7 @@ public interface IPlayerState
 /// </summary>
 public abstract class BasePlayerState : IPlayerState
 {
-    // 플레이어의 조작을 담당하는 최상위 클래스
+    // 플레이어의 조작을 다루는 최상위 클래스
     protected readonly BasePlayerController _playerController;
 
     // 애니메이터

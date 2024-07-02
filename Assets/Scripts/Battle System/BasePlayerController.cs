@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// 플레이어인 발키리가 입력을 받아 행동할 내용을 정의합니다.
+/// 플레이어가 입력(Input System)에 따른 행동을 정의하기 위한 인터페이스입니다.
 /// </summary>
 interface IPlayerController
 {
@@ -23,33 +23,18 @@ interface IPlayerController
 }
 
 /// <summary>
-/// 플레이어인 캐릭터(발키리)가 입력을 받아 행동할 내용을 다루는 최상위 클래스입니다.
+/// 플레이어의 조작을 다루는 최상위 클래스입니다.
 /// </summary>
 public abstract class BasePlayerController : MonoBehaviour, IPlayerController
 {
-    #region 변수
+    #region 변수(Field)
 
-    #region 충돌체 / 강체
-
-    // 캐릭터의 충돌체와 강체; 애니메이터로 루트 모션을 사용하므로, 캐릭터 컨트롤러 컴포넌트를 사용하지 않습니다.
-    private CapsuleCollider _capsuleCollider;
-    private Rigidbody _rigidbody;
-
-    #endregion 충돌체 / 강체
-
-    #region 애니메이터
-
-    // 캐릭터의 애니메이터; 하위 클래스에서 접근하여 사용합니다.
-    protected Animator _animator;
-
-    #endregion 애니메이터
-
-    #region 상태 패턴
+    #region 상태 패턴(State Pattern)
 
     // 캐릭터의 현재 상태를 나타내는 인터페이스
     private IPlayerState _playerState;
 
-    #endregion 상태 패턴
+    #endregion 상태 패턴(State Pattern)
 
     #region 이동
 
@@ -58,11 +43,11 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
 
     #endregion 이동
 
-    #endregion 변수
+    #endregion 변수(Field)
 
-    #region 함수
+    #region 함수(Method)
 
-    #region 유니티 생명 주기 함수
+    #region 유니티 생명 주기 함수(Unity Life Cycle Method)
 
     // 게임을 시작할 때,
     protected virtual void Awake()
@@ -78,22 +63,18 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
         _playerState.Execute();
     }
 
-    #endregion 유니티 생명 주기 함수
+    #endregion 유니티 생명 주기 함수(Unity Life Cycle Method)
 
     #region 커스텀 함수
 
     // 필드를 초기화합니다.
     private void InitializeField()
     {
-        _capsuleCollider = GetComponent<CapsuleCollider>();
-        _rigidbody = GetComponent<Rigidbody>();
-        _animator = GetComponent<Animator>();
+        // 메인 카메라의 위치 값을 참조합니다.
+        _cameraTransform = Camera.main.transform;
 
         // 시작 시 첫 상태는 Standby 상태입니다.
         ChangeState(new PlayerStandbyState(this));
-
-        // 메인 카메라의 위치 값을 참조합니다.
-        _cameraTransform = Camera.main.transform;
     }
 
     // 캐릭터의 상태를 변경합니다.
@@ -104,20 +85,26 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
         _playerState.Enter(); // 그 상태에 진입합니다.
     }
 
-    // Input Systems
+    #region 입력 시스템(Input System)
+
+    // 이동
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
+        // 이동은 입력(Press)과 해제(Release)의 구분 없이 모두 함수를 호출합니다.
         _playerState.OnMove(callbackContext.ReadValue<Vector2>());
     }
 
+    // 회피
     public void OnEvade(InputAction.CallbackContext callbackContext)
     {
+        // 그 외의 기능은 입력되었을 때만 함수를 호출합니다. (해제할 때는 호출하지 않습니다.)
         if (callbackContext.performed)
         {
             _playerState.OnEvade();
         }
     }
 
+    // 공격
     public void OnAttack(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.performed)
@@ -125,7 +112,8 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
             _playerState.OnAttack();
         }
     }
-
+    
+    // 무기 스킬
     public void OnWeaponSkill(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.performed)
@@ -134,6 +122,7 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
         }
     }
 
+    // 필살기
     public void OnUltimate(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.performed)
@@ -142,7 +131,9 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
         }
     }
 
+    #endregion 입력 시스템(Input System)
+
     #endregion 커스텀 함수
 
-    #endregion 함수
+    #endregion 함수(Method)
 }
