@@ -16,10 +16,10 @@ interface IPlayerController
     void OnAttack(InputAction.CallbackContext callbackContext);
 
     // 무기
-    void OnWeapon(InputAction.CallbackContext callbackContext);
+    void OnWeaponSkill(InputAction.CallbackContext callbackContext);
 
     // 궁극기
-    void OnUltra(InputAction.CallbackContext callbackContext);
+    void OnUltimate(InputAction.CallbackContext callbackContext);
 }
 
 /// <summary>
@@ -42,13 +42,6 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
     // 캐릭터의 애니메이터; 하위 클래스에서 접근하여 사용합니다.
     protected Animator _animator;
 
-    // 애니메이터의 매개변수를 해시 값으로 접근합니다.
-    protected readonly int _move_AnimatorHash = Animator.StringToHash("Move");
-    protected readonly int _evade_AnimatorHash = Animator.StringToHash("Evade");
-    protected readonly int _attack_AnimatorHash = Animator.StringToHash("Attack");
-    protected readonly int _weapon_AnimatorHash = Animator.StringToHash("Weapon");
-    protected readonly int _ultra_AnimatorHash = Animator.StringToHash("Ultra");
-
     #endregion 애니메이터
 
     #region 상태 패턴
@@ -61,13 +54,7 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
     #region 이동
 
     // 카메라의 위치 값
-    private Transform _cameraTransform;
-
-    // 입력(방향 키) 값
-    private Vector2 inputVector;
-
-    // 회전 속도
-    [SerializeField] private float rotateSpeed = 10.0f;
+    public Transform _cameraTransform { get; private set; }
 
     #endregion 이동
 
@@ -87,62 +74,11 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
     // 매 프레임마다,
     private void Update()
     {
-        // 이동을 계산합니다.
-        Move(inputVector);
-
         // 현재의 상태에 대한 행동을 수행합니다.
         _playerState.Execute();
     }
 
     #endregion 유니티 생명 주기 함수
-
-    #region 입력 시스템
-
-    // 사용자로부터 입력을 받아, 그에 해당하는 행동을 취합니다.
-
-    // 이동
-    public virtual void OnMove(InputAction.CallbackContext callbackContext)
-    {
-        inputVector = callbackContext.ReadValue<Vector2>();
-    }
-
-    // 회피
-    public virtual void OnEvade(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.performed)
-        {
-            _animator.SetTrigger(_evade_AnimatorHash);
-        }
-    }
-
-    // 공격
-    public virtual void OnAttack(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.performed)
-        {
-            _animator.SetTrigger(_attack_AnimatorHash);
-        }
-    }
-
-    // 무기 스킬 (무기 스킬은 없을 수도 있다.)
-    public virtual void OnWeapon(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.performed)
-        {
-            // _animator.SetTrigger(_weapon_AnimatorHash);
-        }
-    }
-
-    // 필살기
-    public virtual void OnUltra(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.performed)
-        {
-            _animator.SetTrigger(_ultra_AnimatorHash);
-        }
-    }
-
-    #endregion 입력 시스템
 
     #region 커스텀 함수
 
@@ -168,23 +104,30 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
         _playerState.Enter(); // 그 상태에 진입합니다.
     }
 
-    // 캐릭터의 이동을 구현합니다.
-    private void Move(Vector2 inputVector)
+    // Input Systems
+    public void OnMove(InputAction.CallbackContext callbackContext)
     {
-        // 카메라의 방향과 입력 값을 참조하여 이동 방향을 계산합니다.
-        Vector3 moveVector = inputVector.y * _cameraTransform.forward + inputVector.x * _cameraTransform.right;
-        moveVector.y = 0f; // Y축으로는 이동하지 않습니다.
-        moveVector.Normalize(); // 값을 정규화합니다.
+        _playerState.OnMove(callbackContext.ReadValue<Vector2>());
+    }
 
-        // 입력 값이 있을 때만 이동과 회전을 수행합니다.
-        bool isMove = (inputVector != Vector2.zero);
+    public void OnEvade(InputAction.CallbackContext callbackContext)
+    {
+        _playerState.OnEvade();
+    }
 
-        _animator.SetBool(_move_AnimatorHash, isMove); // 이동; 루트 모션을 사용합니다.
+    public void OnAttack(InputAction.CallbackContext callbackContext)
+    {
+        _playerState.OnAttack();
+    }
 
-        if (isMove) // 회전
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVector), rotateSpeed * Time.deltaTime);
-        }
+    public void OnWeaponSkill(InputAction.CallbackContext callbackContext)
+    {
+        _playerState.OnWeaponSkill();
+    }
+
+    public void OnUltimate(InputAction.CallbackContext callbackContext)
+    {
+        _playerState.OnUltimate();
     }
 
     #endregion 커스텀 함수

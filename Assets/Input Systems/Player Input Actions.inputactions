@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Evade",
+                    "type": "Button",
+                    "id": "45bb1a85-1380-450e-b675-4076df2055af",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Attack",
                     "type": "Button",
                     "id": "190997f0-71fb-4cb4-89e5-e3c57f173de4",
@@ -24,7 +33,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Ultra",
+                    "name": "WeaponSkill",
+                    "type": "Button",
+                    "id": "a11e5d85-ba14-4fe3-b285-c01f5e81d9cc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ultimate",
                     "type": "Button",
                     "id": "57c937d9-28d4-42e4-97e5-a5b6bfb840fb",
                     "expectedControlType": "Button",
@@ -52,7 +70,7 @@
                     "interactions": "Hold(duration=0.4,pressPoint=0.1),Press(pressPoint=0.1)",
                     "processors": "",
                     "groups": "",
-                    "action": "Ultra",
+                    "action": "Ultimate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -110,6 +128,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "e910cd3a-149a-4b68-ba33-95a01e3d381b",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Evade",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a576a5f9-9e23-4690-8d40-d34220adc09f",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
