@@ -21,36 +21,42 @@ public class MainUI : MonoBehaviour
 
     #region 유니티 생명 주기 함수
 
+    // 게임을 시작할 때,
     private void Awake()
     {
-        root = GetComponent<UIDocument>().rootVisualElement;
-
-        // Q<>("_name")으로 접근할 수 있다.
-        _valkyrieButton = root.Q<Button>("Valkyrie_Button");
-        _battleButton = root.Q<Button>("Battle_Button");
-        _equipmentButton = root.Q<Button>("Equipment_Button");
-        _gachaButton = root.Q<Button>("Gacha_Button");
-
-        // .clicked += / RegisterCallback()으로 클릭 이벤트를 등록할 수 있다.
-        //_battleButton.clicked += () => Debug.Log("Battle Button Clicked!");
-        //_battleButton.RegisterCallback((ClickEvent evt) => Debug.Log("Battle Button Clicked!"));
-
-        Debug.Log("Awake!");
+        // 변수를 초기화합니다.
+        InitializeField();
     }
 
-    // 활성화될 때,
+    // 활성화할 때,
     private void OnEnable()
     {
         // 버튼에 이벤트를 등록합니다.
-        Debug.Log("OnEnable!");
         RegisterClickEvent();
     }
 
-    // 비활성화될 때,
+    // 비활성화할 때,
     private void OnDisable()
     {
         // 버튼에 이벤트를 해제합니다.
         UnregisterClickEvent();
+    }
+
+    #endregion 유니티 생명 주기 함수
+
+    #region 커스텀 함수
+
+    // 변수를 초기화합니다.
+    private void InitializeField()
+    {
+        // UIDocument 컴포넌트로부터 Root Visual Element를 참조하여,
+        root = GetComponent<UIDocument>().rootVisualElement;
+
+        // 그것의 Q<T>("_name")으로 UI 요소에 접근합니다.
+        _valkyrieButton = root.Q<Button>("Valkyrie_Button");
+        _battleButton = root.Q<Button>("Battle_Button");
+        _equipmentButton = root.Q<Button>("Equipment_Button");
+        _gachaButton = root.Q<Button>("Gacha_Button");
     }
 
     // 버튼에 클릭 이벤트를 등록합니다.
@@ -95,5 +101,5 @@ public class MainUI : MonoBehaviour
         Debug.Log("Gacha Button is Clicked!");
     }
 
-    #endregion 유니티 생명 주기 함수
+    #endregion 커스텀 함수
 }

@@ -619,7 +619,7 @@ PrefabInstance:
       addedObject: {fileID: 394498138}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6128f9d2a9dd00e4da9bd2bbcd214d24, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 394498135}
+      addedObject: {fileID: 394498140}
   m_SourcePrefab: {fileID: 100100000, guid: 6128f9d2a9dd00e4da9bd2bbcd214d24, type: 3}
 --- !u!1 &356245361
 GameObject:
@@ -772,18 +772,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6128f9d2a9dd00e4da9bd2bbcd214d24, type: 3}
   m_PrefabInstance: {fileID: 300689183}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &394498135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394498132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66dc233572d51434391339e1441ef906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &394498136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,7 +799,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 394498135}
+      - m_Target: {fileID: 394498140}
         m_TargetAssemblyTypeName: BasePlayerController, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -827,7 +815,7 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 394498135}
+      - m_Target: {fileID: 394498140}
         m_TargetAssemblyTypeName: BasePlayerController, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
@@ -842,7 +830,19 @@ MonoBehaviour:
     m_ActionId: 190997f0-71fb-4cb4-89e5-e3c57f173de4
     m_ActionName: Player/Attack[/Keyboard/k]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 394498140}
+        m_TargetAssemblyTypeName: BasePlayerController, Assembly-CSharp
+        m_MethodName: OnUltra
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 57c937d9-28d4-42e4-97e5-a5b6bfb840fb
     m_ActionName: Player/Ultra[/Keyboard/i]
   m_NeverAutoSwitchControlSchemes: 0
@@ -900,6 +900,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &394498140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394498132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eacfc9006691fa24fb85527810ddac15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 10
 --- !u!1001 &446767371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1702,7 +1715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1053330204
 Transform:
   m_ObjectHideFlags: 0
