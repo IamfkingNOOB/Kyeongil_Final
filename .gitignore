@@ -70,4 +70,4 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-Assets/Entities/Characters/Avatar_Theresa_C7_BW/Animations
+Assets/Entities/Characters/Avatar_Theresa_C7_BW/Animations/AnimationClips
