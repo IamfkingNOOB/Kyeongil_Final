@@ -112,22 +112,34 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
 
     public void OnEvade(InputAction.CallbackContext callbackContext)
     {
-        _playerState.OnEvade();
+        if (callbackContext.performed)
+        {
+            _playerState.OnEvade();
+        }
     }
 
     public void OnAttack(InputAction.CallbackContext callbackContext)
     {
-        _playerState.OnAttack();
+        if (callbackContext.performed)
+        {
+            _playerState.OnAttack();
+        }
     }
 
     public void OnWeaponSkill(InputAction.CallbackContext callbackContext)
     {
-        _playerState.OnWeaponSkill();
+        if (callbackContext.performed)
+        {
+            _playerState.OnWeaponSkill();
+        }
     }
 
     public void OnUltimate(InputAction.CallbackContext callbackContext)
     {
-        _playerState.OnUltimate();
+        if (callbackContext.performed)
+        {
+            _playerState.OnUltimate();
+        }
     }
 
     #endregion 커스텀 함수

@@ -78,6 +78,9 @@ public class PlayerStandbyState : BasePlayerState
     // 상태 유지 시,
     public override void Execute()
     {
+        Debug.Log($"PlayerStandbyState : GetCurrentAnimatorStateInfo().normalizedTime = {_animator.GetCurrentAnimatorStateInfo(0).normalizedTime}");
+
+
         // 만약 일정 시간 이상 Standby 상태를 유지할 경우,
         if (tempTimeValue + timeToIdle < Time.time)
         {
@@ -258,8 +261,9 @@ public class PlayerMoveState : BasePlayerState
 public class PlayerAttackState : BasePlayerState
 {
     // 선입력 관련 변수
-    private float _preInputDelay;
+    private float _preInputDelay = 0.3f;
     private Action _preInput;
+    private bool isTransit = false;
 
     // 생성자
     public PlayerAttackState(BasePlayerController playerController) : base(playerController) { }
@@ -273,9 +277,18 @@ public class PlayerAttackState : BasePlayerState
     // 상태 유지 시,
     public override void Execute()
     {
-        if (_preInputDelay < _animator.GetCurrentAnimatorStateInfo(0).normalizedTime)
+        if (_preInputDelay > _animator.GetCurrentAnimatorStateInfo(0).normalizedTime)
         {
+            isTransit = false;
+        }
+
+        if (_preInputDelay < _animator.GetCurrentAnimatorStateInfo(0).normalizedTime && !isTransit)
+        {
+            Debug.Log($"Pre Input Delay = {_preInputDelay}, GetCurrentAnimatorStateInfo().normalizedTime = {_animator.GetCurrentAnimatorStateInfo(0).normalizedTime}");
+
             _preInput?.Invoke();
+            _preInput = null;
+            isTransit = true;
         }
     }
 
@@ -299,7 +312,7 @@ public class PlayerAttackState : BasePlayerState
 
     public override void OnAttack()
     {
-        _preInput = () => { _playerController.ChangeState(new PlayerAttackState(_playerController)); };
+        _preInput = () => { _animator.SetTrigger(_attack_AnimatorHash); };
     }
 
     public override void OnWeaponSkill()
