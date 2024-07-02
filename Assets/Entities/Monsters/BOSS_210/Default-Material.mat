@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Avatar_Theresa_C7_Material_Hair
+  m_Name: Default-Material
   m_Shader: {fileID: 4800000, guid: 64d8d99f829a5ac48b88950f27bb6df5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -62,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3c34717968d19294d82ccbd129103557, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex2:
@@ -113,7 +113,7 @@ Material:
     - _EyeEffectPupil: 0
     - _FilterLight: 1
     - _GlossMapScale: 1
-    - _Glossiness: 0.14142135
+    - _Glossiness: 0.4472136
     - _GlossyReflections: 1
     - _HRRimIntensity: 0
     - _HRRimPower: 0.1
@@ -149,7 +149,7 @@ Material:
     - _Shininess: 10
     - _SmoothnessTextureChannel: 0
     - _Soft: 0
-    - _SpecMulti: 0.1
+    - _SpecMulti: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _StencilCompA: 8
@@ -193,16 +193,16 @@ Material:
     - m_start_faceshading: 0
     - m_start_hardrimlight: 0
     - m_start_hardrimlightcolors: 0
-    - m_start_lighting: 0
+    - m_start_lighting: 1
     - m_start_main: 0
     - m_start_mainalpha: 0
     - m_start_outlines: 0
     - m_start_outlinescolor: 0
     - m_start_renderingOptions: 0
     - m_start_rimlight: 0
-    - m_start_shadowcolor: 0
+    - m_start_shadowcolor: 1
     - m_start_specialeffects: 0
-    - m_start_specular: 0
+    - m_start_specular: 1
     - shader_is_using_hoyeditor: 0
     - shader_master_label: 0
     - variant_selector: 0
@@ -224,11 +224,11 @@ Material:
     - _ExpShadowColor3: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EyeEffectCenterPos: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _EyeEffectLocalScale: {r: 1, g: 1, b: 0, a: 0}
-    - _FirstShadowMultColor: {r: 0.9, g: 0.7, b: 0.75, a: 1}
-    - _FirstShadowMultColor2: {r: 0.9, g: 0.7, b: 0.75, a: 1}
-    - _FirstShadowMultColor3: {r: 0.9, g: 0.7, b: 0.75, a: 1}
-    - _FirstShadowMultColor4: {r: 0.9, g: 0.7, b: 0.75, a: 1}
-    - _FirstShadowMultColor5: {r: 0.9, g: 0.7, b: 0.75, a: 1}
+    - _FirstShadowMultColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FirstShadowMultColor2: {r: 1, g: 1, b: 1, a: 1}
+    - _FirstShadowMultColor3: {r: 1, g: 1, b: 1, a: 1}
+    - _FirstShadowMultColor4: {r: 1, g: 1, b: 1, a: 1}
+    - _FirstShadowMultColor5: {r: 1, g: 1, b: 1, a: 1}
     - _GlobalOutlineScale: {r: 1, g: 1, b: 1, a: 1}
     - _HRRimColor2: {r: 1, g: 1, b: 1, a: 1}
     - _HRRimColor3: {r: 1, g: 1, b: 1, a: 1}
@@ -243,7 +243,7 @@ Material:
     - _OutlineColor4: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor5: {r: 0, g: 0, b: 0, a: 1}
     - _RGColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0.9, g: 0.7, b: 0.75, a: 1}
+    - _ShadowColor: {r: 1, g: 1, b: 1, a: 1}
     - _headForward: {r: 0, g: 0, b: 1, a: 0}
     - _headRight: {r: -1, g: 0, b: 0, a: 0}
     - _headUp: {r: 0, g: 1, b: 0, a: 0}

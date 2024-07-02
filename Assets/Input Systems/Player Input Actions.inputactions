@@ -20,7 +20,7 @@
                     "id": "45bb1a85-1380-450e-b675-4076df2055af",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=0.4,pressPoint=0.1),Press(pressPoint=0.1)",
                     "initialStateCheck": false
                 },
                 {
@@ -29,7 +29,7 @@
                     "id": "190997f0-71fb-4cb4-89e5-e3c57f173de4",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=0.4,pressPoint=0.1),Press(pressPoint=0.1)",
                     "initialStateCheck": false
                 },
                 {
@@ -38,7 +38,7 @@
                     "id": "a11e5d85-ba14-4fe3-b285-c01f5e81d9cc",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=0.4,pressPoint=0.1),Press(pressPoint=0.1)",
                     "initialStateCheck": false
                 },
                 {
@@ -47,7 +47,7 @@
                     "id": "57c937d9-28d4-42e4-97e5-a5b6bfb840fb",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=0.4,pressPoint=0.1),Press(pressPoint=0.1)",
                     "initialStateCheck": false
                 }
             ],
@@ -67,7 +67,7 @@
                     "name": "",
                     "id": "585f6ef7-4da9-4492-a725-da6be66fc3c8",
                     "path": "<Keyboard>/i",
-                    "interactions": "Hold(duration=0.4,pressPoint=0.1),Press(pressPoint=0.1)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Ultimate",

@@ -16,6 +16,7 @@ MonoBehaviour:
     keys:
     - 35b3484e544742745981e3bd57166b98
     - e8d53521f485c164fa9a8472533e21b4
+    - ece9fceb78d7d3749b8e8877674604aa
     values:
     - goDatas_byGlobalId:
         keys:
@@ -68,3 +69,39 @@ MonoBehaviour:
         values:
         - colorIndex: 5
           iconNameOrGuid: Folder Icon
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-ece9fceb78d7d3749b8e8877674604aa-1586451810-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ece9fceb78d7d3749b8e8877674604aa-792030209-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ece9fceb78d7d3749b8e8877674604aa-179857863-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ece9fceb78d7d3749b8e8877674604aa-613123224-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ece9fceb78d7d3749b8e8877674604aa-2009186269-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ece9fceb78d7d3749b8e8877674604aa-1558510378-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ece9fceb78d7d3749b8e8877674604aa-171039756-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ece9fceb78d7d3749b8e8877674604aa-1599980867-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ece9fceb78d7d3749b8e8877674604aa-919132149155446097-540229650
+        - globalObjectIdString: GlobalObjectId_V1-2-ece9fceb78d7d3749b8e8877674604aa-1731683780-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ece9fceb78d7d3749b8e8877674604aa-919132149155446097-1942420741
+        values:
+        - colorIndex: 2
+          iconNameOrGuid: Folder Icon
+        - colorIndex: 7
+          iconNameOrGuid: Folder Icon
+        - colorIndex: 5
+          iconNameOrGuid: Folder Icon
+        - colorIndex: 0
+          iconNameOrGuid: Folder Icon
+        - colorIndex: 9
+          iconNameOrGuid: Folder Icon
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+        - colorIndex: 0
+          iconNameOrGuid: DirectionalLight Icon
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 0
+          iconNameOrGuid: Terrain Icon
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
