@@ -22,7 +22,7 @@ public class PlayerStandbyState : BasePlayerState
     // 상태 유지 시,
     public override void Execute()
     {
-        Debug.Log($"PlayerStandbyState : GetCurrentAnimatorStateInfo().normalizedTime = {_animator.GetCurrentAnimatorStateInfo(0).normalizedTime}");
+        // Debug.Log($"PlayerStandbyState : GetCurrentAnimatorStateInfo().normalizedTime = {_animator.GetCurrentAnimatorStateInfo(0).normalizedTime}");
 
 
         // 만약 일정 시간 이상 Standby 상태를 유지할 경우,

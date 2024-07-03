@@ -16,7 +16,7 @@ public class PlayerMoveState : BasePlayerState
     public override void Enter()
     {
         // 카메라의 위치 값을 참조합니다.
-        _cameraTransform = _playerController._cameraTransform;
+        _cameraTransform = _playerController.CameraTransform;
     }
 
     // 상태 유지 시,

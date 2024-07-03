@@ -38,8 +38,11 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
 
     #region 이동
 
+    // 캐릭터가 파티의 리더인지를 판별하기 위한 변수
+    public bool IsLeader { get; set; } = false;
+
     // 카메라의 위치 값
-    public Transform _cameraTransform { get; private set; }
+    public Transform CameraTransform { get; private set; }
 
     #endregion 이동
 
@@ -71,10 +74,17 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
     private void InitializeField()
     {
         // 메인 카메라의 위치 값을 참조합니다.
-        _cameraTransform = Camera.main.transform;
+        CameraTransform = Camera.main.transform;
 
-        // 시작 시 첫 상태는 Standby 상태입니다.
-        ChangeState(new PlayerStandbyState(this));
+        // 시작 시의 첫 상태를 지정합니다.
+        ChangeState(SetFirstState(IsLeader));
+    }
+
+    // 캐릭터의 첫 상태를 지정합니다.
+    private BasePlayerState SetFirstState(bool isLeader)
+    {
+        // 캐릭터가 파티의 리더인지를 판별하여, 맞으면 Appear, 아닐 경우 Standby 상태를 반환합니다.
+        return (isLeader) ? new PlayerAppearState(this) : new PlayerStandbyState(this);
     }
 
     // 캐릭터의 상태를 변경합니다.
