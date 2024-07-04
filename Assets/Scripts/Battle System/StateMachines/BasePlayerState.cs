@@ -36,6 +36,7 @@ public abstract class BasePlayerState : IPlayerState
 
     // Idle
     protected readonly int _idle_AnimatorHash = Animator.StringToHash("Idle");
+    protected readonly int _idleCount_AnimatorHash = Animator.StringToHash("Idle_Index");
 
     // Move
     protected readonly int _move_AnimatorHash = Animator.StringToHash("IsMove");
@@ -63,6 +64,8 @@ public abstract class BasePlayerState : IPlayerState
     protected float _postInputDelay = 0.9f;
     protected Action _preInput; // 선입력 행동
     protected bool _isInTransition = false; // 애니메이션의 전환 여부; 선입력 이후에 입력에 대한 호출의 중복을 방지하기 위한 변수
+
+    protected Vector2 _inputVector; // 방향키 입력
 
     #endregion 애니메이션의 전환에 필요한 변수
 

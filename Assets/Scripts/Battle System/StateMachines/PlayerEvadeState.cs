@@ -28,7 +28,7 @@ public class PlayerEvadeState : BasePlayerState
     // 상태 유지 시,
     public override void Execute()
     {
-        Debug.Log(_isInTransition);
+        Debug.Log("Evade State!");
 
         // 현재 재생 중인 애니메이션의 시점을 가져옵니다. (0 ~ 1 사이의 정규화된 값)
         float currentAnimatorStateTime = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
@@ -74,7 +74,7 @@ public class PlayerEvadeState : BasePlayerState
     public override void OnMove(Vector2 inputVector)
     {
         // [TODO]: 방향키와 함께 회피할 경우, 그 방향으로 회피하는 애니메이션을 재생해야 한다.
-        _preInput = () => { _playerController.ChangeState(new PlayerMoveState(_playerController)); };
+        _preInput = () => { _playerController.ChangeState(new PlayerMoveState(_playerController, inputVector)); };
     }
 
     public override void OnEvade()
@@ -122,7 +122,7 @@ public class PlayerEvadeState : BasePlayerState
     private void CheckTransitionToStandby()
     {
         // 만약 현재 애니메니이션이 Standby 상태로 전환 중일 경우,
-        if (_animator.GetAnimatorTransitionInfo(0).IsName("Evade Backward -> Exit"))
+        if (_animator.GetAnimatorTransitionInfo(0).IsUserName("[Exit] Evade -> Standby"))
         {
             // Standby 상태에 진입합니다. (Standby 애니메이션은 FSM의 Exit Time 값을 설정하여 직접 전환한다.)
             _playerController.ChangeState(new PlayerStandbyState(_playerController));

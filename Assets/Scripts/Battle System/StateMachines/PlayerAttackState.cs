@@ -31,6 +31,8 @@ public class PlayerAttackState : BasePlayerState
     // 상태 유지 시,
     public override void Execute()
     {
+        Debug.Log("Attack State!");
+
         // 현재 재생 중인 애니메이션의 시점을 가져옵니다. (0 ~ 1 사이의 정규화된 값)
         float currentAnimatorStateTime = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
@@ -68,7 +70,7 @@ public class PlayerAttackState : BasePlayerState
     // Input Systems
     public override void OnMove(Vector2 inputVector)
     {
-        _preInput = () => { _playerController.ChangeState(new PlayerMoveState(_playerController)); };
+        _preInput = () => { _playerController.ChangeState(new PlayerMoveState(_playerController, inputVector)); };
     }
 
     public override void OnEvade()
@@ -113,7 +115,7 @@ public class PlayerAttackState : BasePlayerState
     private void CheckTransitionToStandby()
     {
         // 만약 현재 애니메니이션이 Standby 상태로 전환 중일 경우,
-        if (_animator.GetAnimatorTransitionInfo(0).IsName("Attack -> Standby"))
+        if (_animator.GetAnimatorTransitionInfo(0).IsUserName("[Exit] Attack -> Standby"))
         {
             // Standby 상태에 진입합니다. (Standby 애니메이션은 FSM의 Exit Time 값을 설정하여 직접 전환한다.)
             _playerController.ChangeState(new PlayerStandbyState(_playerController));

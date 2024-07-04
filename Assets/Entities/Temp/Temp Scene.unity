@@ -13684,6 +13684,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Avatar_Theresa_C7_BW
       objectReference: {fileID: 0}
+    - target: {fileID: 8203725809508323964, guid: 616153bac5c7faa47a8c7cbdc955d1a1, type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

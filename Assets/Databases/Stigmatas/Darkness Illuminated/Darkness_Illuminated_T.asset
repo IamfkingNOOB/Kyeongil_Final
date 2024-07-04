@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8315edbdd246f424bb170862bc3e3802, type: 3}
+  m_Name: Darkness_Illuminated_T
+  m_EditorClassIdentifier: 
+  Stigmata_ID: Darkness_Illuminated_T
+  Name: "\uD788\uBA54\uCF54\xB7\uB2EC\uCF64\uD55C \uAFC8 (\uC0C1)"
+  Position: 0
+  Rank: 5
+  Level: 50
+  HP: 374
+  SP: 0
+  ATK: 116
+  DEF: 55
+  CRT: 0
+  Skill: {fileID: 11400000, guid: c9a4b840b0df210459586eb76d03bca1, type: 2}
+  SetBonuses_2Set: {fileID: 0}
+  SetBonuses_3Set: {fileID: 0}
