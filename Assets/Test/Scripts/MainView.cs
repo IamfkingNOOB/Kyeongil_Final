@@ -6,11 +6,18 @@ public class MainView : MonoBehaviour
     [SerializeField]
     private VisualTreeAsset m_ListEntryTemplate; // Entry UI
 
-    void OnEnable()
+    UIDocument uiDocument;
+
+    private void Awake()
     {
         // The UXML is already instantiated by the UIDocument component
-        UIDocument uiDocument = GetComponent<UIDocument>();
+        uiDocument = GetComponent<UIDocument>();
 
+        
+    }
+
+    void OnEnable()
+    {
         // Initialize the character list controller
         CharacterListController characterListController = new CharacterListController();
         characterListController.InitializeCharacterList(uiDocument.rootVisualElement, m_ListEntryTemplate);

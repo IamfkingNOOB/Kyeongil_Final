@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 1684203435}
   - component: {fileID: 1684203434}
   - component: {fileID: 1684203436}
+  - component: {fileID: 1684203437}
   m_Layer: 5
   m_Name: UIDocument
   m_TagString: Untagged
@@ -248,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 8d27047954e31344885a128b95eb9e58, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: cdd6d0a2572820843b788453f009dc20, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: fc495a3d36ea77d44853b171aea19b6a, type: 3}
   m_SortingOrder: 0
 --- !u!4 &1684203435
 Transform:
@@ -273,6 +274,19 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684203433}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf0a0df4bf4ae5f48b2e42ab53b50f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _valkyrieListViewItemTemplate: {fileID: 9197481963319205126, guid: 56d0f497d25ba044d942cfe86e962628, type: 3}
+--- !u!114 &1684203437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684203433}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8aa3eb366ac9b1d4db1f5db93430086d, type: 3}
   m_Name: 

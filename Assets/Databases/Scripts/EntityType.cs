@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// 발키리가 가지는 속성에 대한 데이터
+/// 개체(발키리, 몬스터)가 가지는 속성에 대한 데이터
 /// </summary>
 [CreateAssetMenu]
 public class EntityType : ScriptableObject

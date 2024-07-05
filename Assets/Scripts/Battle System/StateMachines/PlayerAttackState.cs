@@ -1,7 +1,4 @@
-using System;
-using UnityEditor.Animations;
 using UnityEngine;
-using static HoyoToon.AnimationParser;
 
 /// <summary>
 /// 플레이어의 Attack(공격) 상태를 관리하는 클래스입니다.

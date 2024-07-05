@@ -1,8 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="MainView.uss" />
+    <Style src="project://database/Assets/Test/UI/MainView.uss?fileID=7433441132597879392&amp;guid=56513e37313002444bb64903fdc59536&amp;type=3#MainView" />
     <ui:VisualElement name="background">
         <ui:VisualElement name="main-container">
-            <ui:ListView focusable="true" name="character-list" />
+            <ui:ListView focusable="true" name="character-list" horizontal-scrolling="true" />
             <ui:VisualElement name="right-container">
                 <ui:VisualElement name="details-container">
                     <ui:VisualElement name="details">

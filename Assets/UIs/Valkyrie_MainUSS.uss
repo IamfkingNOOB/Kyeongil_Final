@@ -1,0 +1,92 @@
+.background {
+    width: 100%;
+    height: 100%;
+}
+
+.layout-menu {
+    width: 100%;
+    height: 10%;
+    flex-direction: row;
+}
+
+.layout-selected {
+    width: 100%;
+    height: 65%;
+    flex-direction: row;
+}
+
+.layout-selected-child {
+    justify-content: space-around;
+}
+
+.layout-identification {
+    width: 100%;
+    height: 100%;
+}
+
+.layout-model {
+    width: 50%;
+    height: 100%;
+}
+
+.layout-equipment {
+    width: 100%;
+    height: 100%;
+}
+
+.layout-selector {
+    width: 100%;
+    height: 25%;
+}
+
+.layout-name {
+    width: 100%;
+    height: 25%;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.layout-status {
+    width: 100%;
+    height: 50%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.layout-skill {
+    width: 100%;
+    height: 25%;
+    align-items: center;
+    justify-content: center;
+}
+
+.layout-weapon {
+    width: 100%;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.layout-stigmata {
+    width: 100%;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.layout-stigmata-list {
+    width: 50%;
+    height: 50%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button-animation:active {
+    transition-property: -unity-background-image-tint-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out-circ;
+    -unity-background-image-tint-color: rgb(128, 128, 128);
+}

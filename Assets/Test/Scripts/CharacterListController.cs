@@ -48,6 +48,8 @@ public class CharacterListController
         // Set up a make item function for a list entry
         m_CharacterList.makeItem = () =>
         {
+            Debug.Log("makeItem");
+
             // Instantiate the UXML template for the entry
             TemplateContainer newListEntry = m_ListEntryTemplate.Instantiate();
 
@@ -67,7 +69,9 @@ public class CharacterListController
         // Set up bind function for a specific list entry
         m_CharacterList.bindItem = (VisualElement item, int index) =>
         {
-            (item.userData as CharacterListEntryController)?.SetCharacterData(m_AllCharacters[index]);
+            Debug.Log("BindItem");
+
+            // (item.userData as CharacterListEntryController)?.SetCharacterData(m_AllCharacters[index]);
         };
 
         // Set a fixed item height matching the height of the item provided in makeItem. 
@@ -75,7 +79,7 @@ public class CharacterListController
         m_CharacterList.fixedItemHeight = 45;
 
         // Set the actual item's source list/array
-        m_CharacterList.itemsSource = m_AllCharacters;
+        // m_CharacterList.itemsSource = m_AllCharacters;
     }
 
     void OnCharacterSelected(IEnumerable<object> selectedItems)
