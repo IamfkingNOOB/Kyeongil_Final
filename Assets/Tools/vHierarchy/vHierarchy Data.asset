@@ -17,6 +17,7 @@ MonoBehaviour:
     - 35b3484e544742745981e3bd57166b98
     - e8d53521f485c164fa9a8472533e21b4
     - ece9fceb78d7d3749b8e8877674604aa
+    - eb54124781556e040874aa5eba30d7e6
     values:
     - goDatas_byGlobalId:
         keys:
@@ -34,6 +35,37 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-126695762-0
         - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-994351806-0
         - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1203340158-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1119848104-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-2068212421-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-2102214949-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1766191342-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1534880091-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-2146279302-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1232764908-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1328373004-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1755547630-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1341528142-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1922078643-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-361519229-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-991273454-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-705913056-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-414202100-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-77819126-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-835246423-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-970096406-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1250733831-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-2140227422-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-768008272-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1645301585-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1640849217-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1993511759-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-275627452-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-553637863-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-1795135300-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-722216742-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-651040198-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-503766610-0
+        - globalObjectIdString: GlobalObjectId_V1-2-35b3484e544742745981e3bd57166b98-38250131-0
         values:
         - colorIndex: 4
           iconNameOrGuid: Canvas Icon
@@ -63,6 +95,68 @@ MonoBehaviour:
           iconNameOrGuid: Folder Icon
         - colorIndex: 6
           iconNameOrGuid: cs Script Icon
+        - colorIndex: 8
+          iconNameOrGuid: Folder Icon
+        - colorIndex: 5
+          iconNameOrGuid: Canvas Icon
+        - colorIndex: 2
+          iconNameOrGuid: Folder Icon
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 5
+          iconNameOrGuid: Canvas Icon
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 5
+          iconNameOrGuid: EventSystem Icon
+        - colorIndex: 5
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-2-e8d53521f485c164fa9a8472533e21b4-1053330203-0
@@ -105,3 +199,18 @@ MonoBehaviour:
           iconNameOrGuid: Terrain Icon
         - colorIndex: 0
           iconNameOrGuid: AvatarMask On Icon
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-1-eb54124781556e040874aa5eba30d7e6-2270370920255502978-0
+        - globalObjectIdString: GlobalObjectId_V1-1-eb54124781556e040874aa5eba30d7e6-6730762177026302385-0
+        - globalObjectIdString: GlobalObjectId_V1-1-eb54124781556e040874aa5eba30d7e6-4136568221222656562-0
+        - globalObjectIdString: GlobalObjectId_V1-1-eb54124781556e040874aa5eba30d7e6-8673945594993786402-0
+        values:
+        - colorIndex: 5
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 
