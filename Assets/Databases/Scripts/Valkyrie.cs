@@ -7,7 +7,7 @@ using UnityEngine;
 public class Valkyrie : ScriptableObject
 {
     [Header("식별자")]
-    public string _valkyrie_ID; // 식별자
+    public int _valkyrie_ID; // 식별자
     public string _name; // 이름
 
     [Space(10), Header("속성")]
