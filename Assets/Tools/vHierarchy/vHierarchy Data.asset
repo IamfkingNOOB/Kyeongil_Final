@@ -18,6 +18,7 @@ MonoBehaviour:
     - e8d53521f485c164fa9a8472533e21b4
     - ece9fceb78d7d3749b8e8877674604aa
     - eb54124781556e040874aa5eba30d7e6
+    - 6ca4f88d1aee91c4597405604ff8cbea
     values:
     - goDatas_byGlobalId:
         keys:
@@ -214,3 +215,27 @@ MonoBehaviour:
           iconNameOrGuid: 
         - colorIndex: 4
           iconNameOrGuid: 
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-6ca4f88d1aee91c4597405604ff8cbea-715351489-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6ca4f88d1aee91c4597405604ff8cbea-79819782-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6ca4f88d1aee91c4597405604ff8cbea-719896147-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6ca4f88d1aee91c4597405604ff8cbea-545159713-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6ca4f88d1aee91c4597405604ff8cbea-371887768-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6ca4f88d1aee91c4597405604ff8cbea-490748146-0
+        - globalObjectIdString: GlobalObjectId_V1-2-6ca4f88d1aee91c4597405604ff8cbea-126856875-0
+        values:
+        - colorIndex: 2
+          iconNameOrGuid: Folder Icon
+        - colorIndex: 9
+          iconNameOrGuid: Folder Icon
+        - colorIndex: 7
+          iconNameOrGuid: Camera Icon
+        - colorIndex: 3
+          iconNameOrGuid: DirectionalLight Icon
+        - colorIndex: 8
+          iconNameOrGuid: Folder Icon
+        - colorIndex: 7
+          iconNameOrGuid: 
+        - colorIndex: 7
+          iconNameOrGuid: Folder Icon

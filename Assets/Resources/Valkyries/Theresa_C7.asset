@@ -12,27 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb5842b1fff1df478c4cfca5c82c2e2, type: 3}
   m_Name: Theresa_C7
   m_EditorClassIdentifier: 
-  _valkyrie_ID: 0
-  _name: 
-  _type: {fileID: 0}
-  _traits: []
-  _rank: 
-  _level: 0
-  _hp: 0
-  _sp: 0
-  _atk: 0
-  _def: 0
-  _crt: 0
-  _weapon: {fileID: 0}
-  _stigmata_T: {fileID: 0}
-  _stigmata_M: {fileID: 0}
-  _stigmata_B: {fileID: 0}
-  _leaderSkill: {fileID: 0}
-  _passive: {fileID: 0}
-  _evasion: {fileID: 0}
+  _valkyrie_ID: 90
+  _character_Name: "\uD14C\uB808\uC0AC \uC544\uD3EC\uCE7C\uB9BD\uC2A4"
+  _suitName: "\uC6D4\uD558\uC758 \uC11C\uC57D\xB7\uD54F\uBE5B \uC0AC\uB791"
+  _type: {fileID: 11400000, guid: 74951d220f5787642b1d087b5835dbef, type: 2}
+  _traits:
+  - {fileID: 11400000, guid: a857bf2079fe30f499ad07c65ff03a4a, type: 2}
+  - {fileID: 11400000, guid: b584515e7636d574fa75e5798d02e1b0, type: 2}
+  - {fileID: 11400000, guid: 9122d24fc891cdc41b5730e6787f91a0, type: 2}
+  - {fileID: 11400000, guid: 2ca16952eeb98c642ac06bc0e10e6c66, type: 2}
+  - {fileID: 11400000, guid: 9f033a013bfa71e488bb8cdcbf1ccd3d, type: 2}
+  _rank: {fileID: 11400000, guid: e6fedadcbc4eb7b4e955e26602285af3, type: 2}
+  _level: 80
+  _hp: 1804
+  _sp: 187
+  _atk: 501
+  _def: 192
+  _crt: 30
+  _weapon: {fileID: 11400000, guid: b37a46ee69034e04bb44738d4a91e2ed, type: 2}
+  _stigmata_T: {fileID: 11400000, guid: ed3107e5bf5184b44a53b050d5dfaf7a, type: 2}
+  _stigmata_M: {fileID: 11400000, guid: 7aeb6106b1bdbca4d8060baabaa6c0a2, type: 2}
+  _stigmata_B: {fileID: 11400000, guid: ad372d90177cbe2488177247d16372dc, type: 2}
+  _leaderSkill: {fileID: 11400000, guid: 5dabe7acb27513c44895b3bb9e537d39, type: 2}
+  _passive: {fileID: 11400000, guid: c13b21d2ab71b4e488f13abd25a8d4e6, type: 2}
+  _evasion: {fileID: 11400000, guid: 2716278840d9c754786652fae90a3b49, type: 2}
   _weaponSkill: {fileID: 0}
-  _basic_ATK: {fileID: 0}
-  _ultimate: {fileID: 0}
-  _special_Attack: {fileID: 0}
-  _description: 
-  _prefabModel: {fileID: 0}
+  _basic_ATK: {fileID: 11400000, guid: 7ee57988b570907478ea0b81ddf6fb20, type: 2}
+  _ultimate: {fileID: 11400000, guid: 9c5cb0272c2e5984aabe8af8577f5d3a, type: 2}
+  _special_Attack: {fileID: 11400000, guid: a3ac78e5c38f0b841a3a2509614f0afd, type: 2}
+  _description: "\uB1CC\uC804 \uB51C\uB7EC & \uC11C\uD3EC\uD130 \uB2A5\uB825\uC744
+    \uBAA8\uB450 \uAC16\uCD94\uACE0 \uC788\uB2E4.\r\n\uCCB4\uC778\uD1B1\uC73C\uB85C
+    \uC801\uC744 \uACF5\uACA9\uD55C\uB2E4.\r\n[\uAD11\uD3ED\uD654] \uC0C1\uD0DC\uC5D0\uC11C
+    \uB300\uB7C9\uC758 \uCD9C\uD608 \uB300\uBBF8\uC9C0\uB97C \uAC00\uD55C\uB2E4.
+    \uD544\uC0B4\uAE30\uB294 \uB1CC\uC804 \uC6D0\uC18C \uC18D\uC131\uC758 \uD30C\uD2F0\uC6D0\uC5D0\uAC8C
+    \uBAA8\uB4E0 \uC6D0\uC18C \uAD00\uD1B5\uC744 \uC81C\uACF5\uD55C\uB2E4."
+  _portrait: {fileID: 21300000, guid: 2b831234d3cd02b49934c63174b39e4e, type: 3}
+  _prefabModel: {fileID: 919132149155446097, guid: c758b9a113ee99e43b00ff0132044ba6, type: 3}

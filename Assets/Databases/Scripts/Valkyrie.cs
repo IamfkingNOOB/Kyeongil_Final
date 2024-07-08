@@ -8,14 +8,15 @@ public class Valkyrie : ScriptableObject
 {
     [Header("식별자")]
     public int _valkyrie_ID; // 식별자
-    public string _name; // 이름
+    public string _character_Name; // 캐릭터 이름
+    public string _suitName; // 슈트 이름
 
     [Space(10), Header("속성")]
     public EntityType _type; // 속성
     public ValkyrieTrait[] _traits; // 특성
 
     [Space(10), Header("스탯 (플레이어)")]
-    public string _rank; // 랭크
+    public Rank _rank; // 랭크
     public int _level; // 레벨
 
     [Space(10), Header("스탯 (발키리)")]
@@ -42,6 +43,9 @@ public class Valkyrie : ScriptableObject
 
     [Space(10), Header("설명"), TextArea]
     public string _description; // 설명문
+
+    [Space(10), Header("초상화")]
+    public Sprite _portrait; // 초상화
 
     [Space(10), Header("모델")]
     public GameObject _prefabModel; // 프리팹 모델
