@@ -39,7 +39,7 @@ public class ValkyrieManager : Singleton<ValkyrieManager>
         // 불러온 발키리 데이터를 발키리 사전에 추가합니다.
         foreach (Valkyrie valkyrie in valkyries)
         {
-            _valkyrieDictionary.Add(valkyrie._valkyrie_ID, valkyrie);
+            _valkyrieDictionary.Add(valkyrie.Valkyrie_ID, valkyrie);
         }
     }
 }

@@ -71,10 +71,10 @@ public class MainValkyrie : MonoBehaviour
         DestroyChildren(GetComponentsInChildren<Transform>().Skip(1).ToArray());
 
         // 매개변수로 받은 발키리를 메인 발키리로 지정하여 생성합니다.
-        Instantiate(valkyrie._prefabModel, transform);
+        Instantiate(valkyrie.Model, transform);
 
         // 이 값을 기억시켜, 게임을 다시 실행했을 때 마지막으로 지정한 발키리를 자동으로 선택하도록 합니다.
-        PlayerPrefs.SetInt("MainValkyrie", valkyrie._valkyrie_ID);
+        PlayerPrefs.SetInt("MainValkyrie", valkyrie.Valkyrie_ID);
     }
 
     /// <summary>

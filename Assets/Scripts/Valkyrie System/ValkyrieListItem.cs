@@ -17,24 +17,20 @@ public class ValkyrieListItem : MonoBehaviour
         _model = model;
         _valkyrie = valkyrie;
 
-        Debug.Log(valkyrie._character_Name);
-
-        Image_Portrait.sprite = valkyrie._portrait;
+        Image_Portrait.sprite = valkyrie.Portrait;
         Image_Portrait.preserveAspect = true;
 
-        Image_Rank.sprite = valkyrie._rank._iconSprite;
-        Text_Level.text = $"Lv.{valkyrie._level}";
+        Image_Rank.sprite = valkyrie.Rank.Icon;
+        Text_Level.text = $"Lv.{valkyrie.Level}";
     }
 
     public void OnClick()
     {
-        Debug.Log(_valkyrie._character_Name);
-
-        _model.ValkyrieName = _valkyrie._character_Name;
-        _model.Rank = _valkyrie._rank._iconSprite;
-        _model.SuitName = _valkyrie._suitName;
-        _model.Level = $"Lv.{_valkyrie._level}";
-        _model.WeaponName = _valkyrie._weapon.name;
+        _model.ValkyrieName = _valkyrie.CharacterName;
+        _model.Rank = _valkyrie.Rank.Icon;
+        _model.SuitName = _valkyrie.SuitName;
+        _model.Level = $"Lv.{_valkyrie.Level}";
+        _model.WeaponName = _valkyrie.Weapon.Name;
         //_model.WeaponPrefab = _valkyrie._weapon.iconSprite;
         //_model.Stigmata_T = _valkyrie._stigmata_T.iconSprite;
         //_model.Stigmata_M = _valkyrie._stigmata_M.iconSprite;

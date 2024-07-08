@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bloodied_Casket
   m_EditorClassIdentifier: 
   _weapon_ID: Bloodied_Casket
+  _type: 4
   _name: "\uD53C\uC758 \uC0C1\uC790\xB7\uAE4A\uC740 \uC0AC\uB791"
   _rank: 6
   _level: 65
@@ -30,4 +31,5 @@ MonoBehaviour:
     \uC0C1\uCC98\uD22C\uC131\uC774\uAC00 \uB41C\uB2E4\uACE0 \uD574\uB3C4 \uADF8\uB140\uB294
     \uC790\uC2E0\uC774 \uC18C\uC911\uD558\uB2E4\uACE0 \uC5EC\uAE30\uB294 \uC0AC\uB78C\uC744
     \uC9C0\uD0AC \uAC83\uC774\uB2E4."
-  _weaponPrefab: {fileID: 0}
+  _icon: {fileID: 0}
+  _model: {fileID: 0}

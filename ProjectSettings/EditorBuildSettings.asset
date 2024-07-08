@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Scene.unity
     guid: 35b3484e544742745981e3bd57166b98
+  - enabled: 1
+    path: Assets/Scenes/Valkyrie Scene.unity
+    guid: 6ca4f88d1aee91c4597405604ff8cbea
   m_configObjects: {}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Anchor_of_the_Voyage
   m_EditorClassIdentifier: 
   _weapon_ID: Anchor_of_the_Voyage
+  _type: 4
   _name: "\uD56D\uD574\uC758 \uB2FB: \uBCC4\uC758 \uC5EC\uD589"
   _rank: 6
   _level: 65
@@ -20,4 +21,5 @@ MonoBehaviour:
   _crt: 23
   _skills: []
   _description: 
-  _weaponPrefab: {fileID: 0}
+  _icon: {fileID: 0}
+  _model: {fileID: 0}
