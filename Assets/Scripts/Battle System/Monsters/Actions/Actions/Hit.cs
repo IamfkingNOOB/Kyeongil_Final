@@ -1,4 +1,6 @@
 using BehaviourTree;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Monster
 {
@@ -7,13 +9,25 @@ namespace Monster
     /// </summary>
     public class Hit : Node
     {
-        // 몬스터(Monster) 클래스
-        private readonly Monster _monster;
+        #region 변수
+
+        private readonly Monster _monster; // 몬스터(Monster) 클래스
+        
+        private readonly Animator _animator; // 애니메이터
+        private readonly int _hit_AnimatorHash = Animator.StringToHash("Hit"); // 사용할 애니메이터의 매개변수
+
+        private readonly NavMeshAgent _navMeshAgent; // 내비게이션
+
+        #endregion 변수
 
         // 생성자
         public Hit(Monster monster)
         {
             _monster = monster;
+
+            // GetComponent 함수는 비용이 크므로, 매 프레임마다 호출되는 평가 함수에서 호출하지 않도록 합니다.
+            monster.TryGetComponent(out _animator);
+            monster.TryGetComponent(out _navMeshAgent);
         }
 
         // 평가 함수
@@ -26,10 +40,22 @@ namespace Monster
             return NodeState.SUCCESS;
         }
 
+        #region 커스텀 함수
+
         // 몬스터의 피격 연출을 구현합니다.
         private void DoHit()
         {
+            // 몬스터가 슈퍼 아머 상태가 아닐 경우에 한해,
+            if (!_monster.Data.IsSuperArmor)
+            {
+                // 내비게이션을 비활성화합니다.
+                _navMeshAgent.isStopped = true;
 
+                // 피격 애니메이션을 재생합니다.
+                _animator.SetTrigger(_hit_AnimatorHash);
+            }
         }
+
+        #endregion 커스텀 함수
     }
 }

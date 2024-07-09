@@ -32,8 +32,6 @@ public class PlayerMoveState : BasePlayerState
     // 상태 유지 시,
     public override void Execute()
     {
-        Debug.Log("Move State!");
-
         // 플레이어는 입력을 받아 이동합니다.
         Move(_inputVector);
 

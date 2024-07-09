@@ -1,4 +1,6 @@
 using BehaviourTree;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Monster
 {
@@ -7,17 +9,34 @@ namespace Monster
     /// </summary>
     public class Attack : Node
     {
-        // 몬스터(Monster) 클래스
-        private readonly Monster _monster;
+        #region 변수
+
+        private readonly Monster _monster; // 몬스터(Monster) 클래스
+        
+        private readonly Animator _animator; // 애니메이터
+        private readonly int _attack_AnimatorHash = Animator.StringToHash("Attack"); // 사용할 애니메이터의 매개변수
+        private readonly int _attackIndex_AnimatorHash = Animator.StringToHash("AttackIndex");
+        private readonly int _chase_AnimatorHash = Animator.StringToHash("Chase");
+
+        private readonly NavMeshAgent _navMeshAgent; // 내비게이션
+
+        #endregion 변수
 
         // 생성자
         public Attack(Monster monster)
         {
             _monster = monster;
+
+            // GetComponent 함수는 비용이 크므로, 매 프레임마다 호출되는 평가 함수에서 호출하지 않도록 합니다.
+            monster.TryGetComponent(out _animator);
+            monster.TryGetComponent(out _navMeshAgent);
         }
 
+        // 평가 함수
         public override NodeState Evaluate()
         {
+            Debug.Log("Attack!");
+
             // 플레이어를 공격합니다.
             DoAttack();
 
@@ -25,10 +44,29 @@ namespace Monster
             return NodeState.SUCCESS;
         }
 
+        #region 커스텀 함수
+
         // 몬스터의 공격을 구현합니다.
         private void DoAttack()
         {
+            // 내비게이션을 비활성화합니다.
+            _navMeshAgent.isStopped = true;
 
+            // 공격 애니메이션을 재생합니다.
+            _animator.SetBool(_chase_AnimatorHash, false);
+            _animator.SetBool(_attack_AnimatorHash, true);
+            _animator.SetInteger(_attackIndex_AnimatorHash, SelectRandomAttack());
         }
+
+        // 여러 개의 공격 애니메이션 중 하나를 무작위로 선택합니다.
+        private int SelectRandomAttack()
+        {
+            int count = _monster.Data.AttackCount;
+            int selectedIndex = Random.Range(0, count);
+
+            return selectedIndex;
+        }
+
+        #endregion 커스텀 함수
     }
 }

@@ -28,7 +28,7 @@ namespace Monster
             float distance = CalculateDistance(_monster.transform.position, _playerTransform.position);
 
             // 플레이어가 몬스터의 추적 범위 안에 있는지를 확인하여, 그 결과에 따른 상태를 반환합니다.
-            state = CheckPlayerInChaseRange(distance, _monster.ChaseRange);
+            state = CheckPlayerInChaseRange(distance, _monster.Data.ChaseRange);
             return state;
         }
 

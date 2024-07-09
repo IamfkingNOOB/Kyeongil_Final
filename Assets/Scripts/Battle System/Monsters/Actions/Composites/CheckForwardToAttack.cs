@@ -11,7 +11,7 @@ namespace Monster
         #region 변수
 
         private readonly Monster _monster; // 몬스터(Monster) 클래스
-        private readonly Animator _animator;
+        private readonly Animator _animator; // 애니메이터
         private readonly Transform _playerTransform; // 플레이어의 위치 값
 
         #endregion 변수
@@ -20,9 +20,11 @@ namespace Monster
         public CheckForwardToAttack(Monster monster)
         {
             _monster = monster;
-            _animator = monster.GetComponent<Animator>();
 
-            // 플레이어는 생성자의 호출 시점에서 Find 함수를 사용하여 찾는다.
+            // GetComponent 함수는 비용이 크므로, 매 프레임마다 호출되는 평가 함수에서 호출하지 않도록 합니다.
+            monster.TryGetComponent(out _animator);
+
+            // 플레이어는 생성자의 호출 시점에서 FindAnyObjectByType 함수를 사용하여 찾습니다. (FindAnyObjectByType이 Find 함수 중 성능이 가장 뛰어납니다.)
             _playerTransform = Object.FindAnyObjectByType<BasePlayerController>().transform;
         }
 

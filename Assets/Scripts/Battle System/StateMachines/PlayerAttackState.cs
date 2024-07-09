@@ -28,8 +28,6 @@ public class PlayerAttackState : BasePlayerState
     // 상태 유지 시,
     public override void Execute()
     {
-        Debug.Log("Attack State!");
-
         // 현재 재생 중인 애니메이션의 시점을 가져옵니다. (0 ~ 1 사이의 정규화된 값)
         float currentAnimatorStateTime = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
 

@@ -34,8 +34,6 @@ public class PlayerIdleState : BasePlayerState
     // 상태 유지 시,
     public override void Execute()
     {
-        Debug.Log("Idle State!");
-
         // Standby 상태로의 전환을 확인합니다.
         CheckTransitionToStandby();
     }
