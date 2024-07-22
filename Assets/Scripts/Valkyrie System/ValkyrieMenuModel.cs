@@ -1,9 +1,12 @@
 using System.ComponentModel;
 using UnityEngine;
 
+/// <summary>
+/// 발키리 화면에서, 데이터를 관리하는 클래스입니다.
+/// </summary>
 public class ValkyrieMenuModel
 {
-    #region Property Changed Event
+    #region 프로퍼티 변경 이벤트
 
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -12,9 +15,9 @@ public class ValkyrieMenuModel
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    #endregion Property Changed Event
+    #endregion 프로퍼티 변경 이벤트
 
-    #region Field
+    #region 변수
 
     private string _valkyrieName;
     private Sprite _rank;
@@ -22,15 +25,15 @@ public class ValkyrieMenuModel
     private string _level;
 
     private string _weaponName;
-    private Sprite _weaponPrefab;
+    private Sprite _weaponIcon;
 
-    private Sprite _stigmata_T;
-    private Sprite _stigmata_M;
-    private Sprite _stigmata_B;
+    private Sprite _stigmataTop;
+    private Sprite _stigmataMiddle;
+    private Sprite _stigmataBottom;
 
-    #endregion Field
+    #endregion 변수
 
-    #region Property
+    #region 프로퍼티
 
     public string ValkyrieName
     {
@@ -62,29 +65,29 @@ public class ValkyrieMenuModel
         set { _weaponName = value; OnPropertyChanged(nameof(WeaponName)); }
     }
 
-    public Sprite WeaponPrefab
+    public Sprite WeaponIcon
     {
-        get { return _weaponPrefab; }
-        set { _weaponPrefab = value; OnPropertyChanged(nameof(WeaponPrefab)); }
+        get { return _weaponIcon; }
+        set { _weaponIcon = value; OnPropertyChanged(nameof(WeaponIcon)); }
     }
 
-    public Sprite Stigmata_T
+    public Sprite StigmataTop
     {
-        get { return _stigmata_T; }
-        set { _stigmata_T = value; OnPropertyChanged(nameof(Stigmata_T)); }
+        get { return _stigmataTop; }
+        set { _stigmataTop = value; OnPropertyChanged(nameof(StigmataTop)); }
     }
 
-    public Sprite Stigmata_M
+    public Sprite StigmataMiddle
     {
-        get { return _stigmata_M; }
-        set { _stigmata_M = value; OnPropertyChanged(nameof(Stigmata_M)); }
+        get { return _stigmataMiddle; }
+        set { _stigmataMiddle = value; OnPropertyChanged(nameof(StigmataMiddle)); }
     }
 
-    public Sprite Stigmata_B
+    public Sprite StigmataBottom
     {
-        get { return _stigmata_B; }
-        set { _stigmata_B = value; OnPropertyChanged(nameof(Stigmata_B)); }
+        get { return _stigmataBottom; }
+        set { _stigmataBottom = value; OnPropertyChanged(nameof(StigmataBottom)); }
     }
 
-    #endregion Property
+    #endregion 프로퍼티
 }

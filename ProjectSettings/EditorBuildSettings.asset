@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Valkyrie Scene.unity
     guid: 6ca4f88d1aee91c4597405604ff8cbea
+  - enabled: 1
+    path: Assets/Scenes/Battle Scene.unity
+    guid: ece9fceb78d7d3749b8e8877674604aa
   m_configObjects: {}

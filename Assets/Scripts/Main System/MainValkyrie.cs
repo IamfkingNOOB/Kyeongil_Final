@@ -12,8 +12,8 @@ public class MainValkyrie : MonoBehaviour
     // 첫 게임을 시작할 때,
     private void Start()
     {
-        // 이미 지정되어 있는 메인 캐릭터가 있는지를 확인합니다. (0일 경우 없는 것으로 간주합니다.)
-        CheckMainValkyrie(PlayerPrefs.GetInt("Main Valkyrie ID"));
+        // 메인 발키리를 설정합니다.
+        SetMainValkyrie();
     }
 
     #endregion 유니티 생명 주기 함수
@@ -21,31 +21,50 @@ public class MainValkyrie : MonoBehaviour
     #region 커스텀 함수
 
     /// <summary>
-    /// 메인 발키리가 지정되어 있는지를 확인합니다.
+    /// 메인 발키리를 설정합니다.
+    /// </summary>
+    private void SetMainValkyrie()
+    {
+        // 메인 발키리가 이전에 설정된 적이 있는지를 확인하여, 있으면 그 발키리를, 없으면 무작위의 발키리를 가져옵니다.
+        int alreadySetMainValkyrieID = PlayerPrefs.GetInt("Main Valkyrie ID"); // 저장된 값이 없을 경우, '0'을 반환합니다.
+        Valkyrie mainValkyrie = GetAlreadySetMainValkyrie(alreadySetMainValkyrieID);
+
+        // 우선, 이미 지정되어 있는 메인 발키리를 제거합니다. (매개변수로 자식을 보내되, 자기 자신인 부모는 제외합니다.)
+        DestroyChildren(GetComponentsInChildren<Transform>().Skip(1).ToArray());
+
+        // 매개변수로 받은 발키리를 메인 발키리로 지정하여 생성합니다.
+        Instantiate(mainValkyrie.Model, transform);
+
+        // 이 값을 기억시켜, 게임을 다시 실행했을 때 마지막으로 지정한 발키리를 자동으로 선택하도록 합니다.
+        PlayerPrefs.SetInt("Main Valkyrie ID", mainValkyrie.ValkyrieID);
+    }
+
+    /// <summary>
+    /// 메인 발키리가 이전에 설정된 적이 있는지를 확인하여, 그 발키리를 반환합니다.
     /// </summary>
     /// <param name="playerPrefs">PlayerPrefs로 저장된 메인 발키리의 ID</param>
-    private void CheckMainValkyrie(int playerPrefs)
+    private Valkyrie GetAlreadySetMainValkyrie(int playerPrefs)
     {
-        // 발키리 사전을 가져옵니다.
-        Dictionary<int, Valkyrie> valkyrieDictionary = ValkyrieManager.Instance.ValkyrieDictionary;
+        // 발키리 목록을 가져옵니다.
+        Dictionary<int, Valkyrie> valkyrieList = DataManager.ValkyrieList;
 
-        // 발키리 클래스를 선언합니다.
         Valkyrie valkyrie;
 
         // 만약 저장된 메인 발키리가 없다면,
-        if (playerPrefs == 0)
+        if (playerPrefs == 0 || valkyrieList[playerPrefs] == null)
         {
-            // 발키리 사전에서 무작위로 한 명을 골라, 메인 발키리로 지정합니다.
-            valkyrie = GetRandomValkyrie(valkyrieDictionary);
+            // 발키리 목록에서 무작위로 한 명을 고릅니다.
+            valkyrie = GetRandomValkyrie(valkyrieList);
         }
         // 만약 있다면,
         else
         {
-            // 발키리 사전에서 그 발키리를 찾아, 메인 발키리로 지정합니다.
-            valkyrie = valkyrieDictionary[playerPrefs];
+            // 발키리 목록에서 그 발키리를 찾습니다.
+            valkyrie = valkyrieList[playerPrefs];
         }
 
-        SetMainValkyrie(valkyrie);
+        // 그 발키리를 반환합니다.
+        return valkyrie;
     }
 
     /// <summary>
@@ -54,27 +73,9 @@ public class MainValkyrie : MonoBehaviour
     /// <returns>무작위로 선택된 발키리</returns>
     private Valkyrie GetRandomValkyrie(Dictionary<int, Valkyrie> dictionary)
     {
-        // 발키리를 무작위로 한 명 고릅니다.
+        // 발키리를 무작위로 한 명 골라, 반환합니다.
         Valkyrie randomValkyrie = dictionary.ElementAt(Random.Range(0, dictionary.Count)).Value;
-
-        // 고른 발키리를 반환합니다.
         return randomValkyrie;
-    }
-
-    /// <summary>
-    /// 메인 발키리를 지정합니다.
-    /// </summary>
-    /// <param name="valkyrie">메인으로 지정할 발키리</param>
-    public void SetMainValkyrie(Valkyrie valkyrie)
-    {
-        // 우선, 이미 지정되어 있는 메인 발키리를 제거합니다. (매개변수로 자식을 보내되, 자기 자신인 부모는 제외합니다.)
-        DestroyChildren(GetComponentsInChildren<Transform>().Skip(1).ToArray());
-
-        // 매개변수로 받은 발키리를 메인 발키리로 지정하여 생성합니다.
-        Instantiate(valkyrie.Model, transform);
-
-        // 이 값을 기억시켜, 게임을 다시 실행했을 때 마지막으로 지정한 발키리를 자동으로 선택하도록 합니다.
-        PlayerPrefs.SetInt("MainValkyrie", valkyrie.Valkyrie_ID);
     }
 
     /// <summary>

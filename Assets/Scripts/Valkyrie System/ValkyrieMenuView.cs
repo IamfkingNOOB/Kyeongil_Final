@@ -1,14 +1,15 @@
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// 발키리 화면에서, UI를 관리하는 클래스입니다.
+/// </summary>
 public class ValkyrieMenuView : MonoBehaviour
 {
-    #region UI: Selected Valkyrie
+    #region UI: 선택한 발키리
 
     // Menu Button
     [SerializeField] private Button Button_Back;
@@ -32,9 +33,9 @@ public class ValkyrieMenuView : MonoBehaviour
     // Stigmata
     [SerializeField] private Button[] Buttons_Stigmata;
 
-    #endregion UI: Selected Valkyrie
+    #endregion UI: 선택한 발키리
 
-    #region UI: List Selector (Scroll View)
+    #region UI: 발키리 목록 (스크롤 뷰)
 
     // Filter Button
     [SerializeField] private Button Button_ListFilter;
@@ -48,24 +49,31 @@ public class ValkyrieMenuView : MonoBehaviour
     // Scroll View Item
     [SerializeField] private GameObject Prefab_ValkyrieListItem;
 
-    #endregion UI: List Selector (Scroll View)
+    #endregion UI: 발키리 목록 (스크롤 뷰)
 
     // View Model
     private ValkyrieMenuModel _viewModel;
 
+    #region 유니티 생명 주기 함수
+
+    // 활성화할 때,
     private void OnEnable()
     {
+        // 뷰 모델(View Model)을 생성하고, 프로퍼티 변경 이벤트를 등록합니다.
         if (_viewModel == null)
         {
             _viewModel = new ValkyrieMenuModel();
             _viewModel.PropertyChanged += OnPropertyChanged;
         }
 
+        // 발키리의 목록을 보여주는 스크롤 뷰의 아이템을 갱신합니다.
         UpdateListItem(ScrollRect_ValkyrieList);
     }
 
+    // 비활성화할 때,
     private void OnDisable()
     {
+        // 프로퍼티 변경 이벤트를 해제하고, 뷰 모델(View Model)을 삭제합니다.
         if (_viewModel != null)
         {
             _viewModel.PropertyChanged -= OnPropertyChanged;
@@ -73,6 +81,11 @@ public class ValkyrieMenuView : MonoBehaviour
         }
     }
 
+    #endregion 유니티 생명 주기 함수
+
+    #region 커스텀 함수
+
+    // 프로퍼티 변경 이벤트를 정의합니다.
     private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
     {
         Debug.Log(e.PropertyName);
@@ -92,35 +105,42 @@ public class ValkyrieMenuView : MonoBehaviour
             case nameof(_viewModel.WeaponName):
                 Text_Weapon.text = _viewModel.WeaponName;
                 break;
-            case nameof(_viewModel.WeaponPrefab):
-                Button_Weapon.image.sprite = _viewModel.WeaponPrefab;
+            case nameof(_viewModel.WeaponIcon):
+                Button_Weapon.image.sprite = _viewModel.WeaponIcon;
                 break;
-            case nameof(_viewModel.Stigmata_T):
-                Buttons_Stigmata[0].image.sprite = _viewModel.Stigmata_T;
+            case nameof(_viewModel.StigmataTop):
+                Buttons_Stigmata[0].image.sprite = _viewModel.StigmataTop;
                 break;
-            case nameof(_viewModel.Stigmata_M):
-                Buttons_Stigmata[1].image.sprite = _viewModel.Stigmata_M;
+            case nameof(_viewModel.StigmataMiddle):
+                Buttons_Stigmata[1].image.sprite = _viewModel.StigmataMiddle;
                 break;
-            case nameof(_viewModel.Stigmata_B):
-                Buttons_Stigmata[2].image.sprite = _viewModel.Stigmata_B;
+            case nameof(_viewModel.StigmataBottom):
+                Buttons_Stigmata[2].image.sprite = _viewModel.StigmataBottom;
                 break;
             default:
                 break;
         }
     }
 
-    private void UpdateListItem(ScrollRect valkyrieList)
+    // 발키리의 목록을 보여주는 스크롤 뷰의 아이템을 갱신합니다.
+    private void UpdateListItem(ScrollRect scrollRect)
     {
-        Dictionary<int, Valkyrie> valkyrieDictionary = ValkyrieManager.Instance.ValkyrieDictionary;
+        // 발키리 목록을 가져옵니다.
+        Dictionary<int, Valkyrie> valkyrieList = DataManager.ValkyrieList;
 
-        foreach (Valkyrie valkyrie in valkyrieDictionary.Values)
+        // 발키리 목록을 순회하면서,
+        foreach (Valkyrie valkyrie in valkyrieList.Values)
         {
-            GameObject newItem = Instantiate(Prefab_ValkyrieListItem, valkyrieList.content);
+            // 스크롤 뷰의 컨텐츠 영역에 아이템을 생성하고,
+            GameObject newItem = Instantiate(Prefab_ValkyrieListItem, scrollRect.content);
             
+            // 아이템의 요소를 초기화합니다.
             if (newItem.gameObject.TryGetComponent(out ValkyrieListItem item))
             {
                 item.Initialize(_viewModel, valkyrie);
             }
         }
     }
+
+    #endregion 커스텀 함수
 }

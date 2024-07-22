@@ -17,4 +17,4 @@ MonoBehaviour:
   _isSuperArmor: 0
   _chaseRange: 100
   _attackRange: 5
-  _attackCount: 0
+  _attackCount: 3

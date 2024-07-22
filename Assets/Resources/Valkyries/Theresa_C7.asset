@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Theresa_C7
   m_EditorClassIdentifier: 
   _valkyrie_ID: 90
-  _character_Name: "\uD14C\uB808\uC0AC \uC544\uD3EC\uCE7C\uB9BD\uC2A4"
+  _characterName: "\uD14C\uB808\uC0AC \uC544\uD3EC\uCE7C\uB9BD\uC2A4"
   _suitName: "\uC6D4\uD558\uC758 \uC11C\uC57D\xB7\uD54F\uBE5B \uC0AC\uB791"
   _type: {fileID: 11400000, guid: 74951d220f5787642b1d087b5835dbef, type: 2}
   _traits:
@@ -37,9 +37,9 @@ MonoBehaviour:
   _passive: {fileID: 11400000, guid: c13b21d2ab71b4e488f13abd25a8d4e6, type: 2}
   _evasion: {fileID: 11400000, guid: 2716278840d9c754786652fae90a3b49, type: 2}
   _weaponSkill: {fileID: 0}
-  _basic_ATK: {fileID: 11400000, guid: 7ee57988b570907478ea0b81ddf6fb20, type: 2}
+  _basicATK: {fileID: 11400000, guid: 7ee57988b570907478ea0b81ddf6fb20, type: 2}
   _ultimate: {fileID: 11400000, guid: 9c5cb0272c2e5984aabe8af8577f5d3a, type: 2}
-  _special_Attack: {fileID: 11400000, guid: a3ac78e5c38f0b841a3a2509614f0afd, type: 2}
+  _specialATK: {fileID: 11400000, guid: a3ac78e5c38f0b841a3a2509614f0afd, type: 2}
   _description: "\uB1CC\uC804 \uB51C\uB7EC & \uC11C\uD3EC\uD130 \uB2A5\uB825\uC744
     \uBAA8\uB450 \uAC16\uCD94\uACE0 \uC788\uB2E4.\r\n\uCCB4\uC778\uD1B1\uC73C\uB85C
     \uC801\uC744 \uACF5\uACA9\uD55C\uB2E4.\r\n[\uAD11\uD3ED\uD654] \uC0C1\uD0DC\uC5D0\uC11C
@@ -47,4 +47,4 @@ MonoBehaviour:
     \uD544\uC0B4\uAE30\uB294 \uB1CC\uC804 \uC6D0\uC18C \uC18D\uC131\uC758 \uD30C\uD2F0\uC6D0\uC5D0\uAC8C
     \uBAA8\uB4E0 \uC6D0\uC18C \uAD00\uD1B5\uC744 \uC81C\uACF5\uD55C\uB2E4."
   _portrait: {fileID: 21300000, guid: 2b831234d3cd02b49934c63174b39e4e, type: 3}
-  _prefabModel: {fileID: 919132149155446097, guid: c758b9a113ee99e43b00ff0132044ba6, type: 3}
+  _model: {fileID: 6755516929059215182, guid: 616153bac5c7faa47a8c7cbdc955d1a1, type: 3}

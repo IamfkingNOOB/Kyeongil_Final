@@ -1,4 +1,3 @@
-using ScriptableObjectData;
 using UnityEngine;
 
 namespace Monster
@@ -40,4 +39,15 @@ namespace Monster
 
         #endregion 유니티 충돌 이벤트
     }
+
+    public class MonsterData
+    {
+        public bool IsHit;
+        public int HP;
+        public int AttackCount;
+        public float AttackRange;
+        public float ChaseRange;
+        public bool IsSuperArmor;
+    }
 }
+
