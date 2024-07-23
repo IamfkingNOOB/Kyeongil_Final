@@ -20,6 +20,7 @@ public class ValkyrieMenuView : MonoBehaviour
     [SerializeField] private Image Image_Rank;
     [SerializeField] private TextMeshProUGUI Text_SuitName;
     [SerializeField] private Button Button_Level;
+    [SerializeField] private TextMeshProUGUI Text_Level;
     [SerializeField] private Button Button_Type;
     [SerializeField] private Button[] Buttons_Traits;
 
@@ -68,6 +69,8 @@ public class ValkyrieMenuView : MonoBehaviour
 
         // 발키리의 목록을 보여주는 스크롤 뷰의 아이템을 갱신합니다.
         UpdateListItem(ScrollRect_ValkyrieList);
+
+        AddButtonListeners();
     }
 
     // 비활성화할 때,
@@ -102,6 +105,9 @@ public class ValkyrieMenuView : MonoBehaviour
             case nameof(_viewModel.SuitName):
                 Text_SuitName.text = _viewModel.SuitName;
                 break;
+            case nameof(_viewModel.Level):
+                Text_Level.text = _viewModel.Level;
+                break;
             case nameof(_viewModel.WeaponName):
                 Text_Weapon.text = _viewModel.WeaponName;
                 break;
@@ -135,11 +141,25 @@ public class ValkyrieMenuView : MonoBehaviour
             GameObject newItem = Instantiate(Prefab_ValkyrieListItem, scrollRect.content);
             
             // 아이템의 요소를 초기화합니다.
-            if (newItem.gameObject.TryGetComponent(out ValkyrieListItem item))
+            if (newItem.TryGetComponent(out ValkyrieListItem item))
             {
                 item.Initialize(_viewModel, valkyrie);
             }
         }
+    }
+
+    // 버튼에 클릭 이벤트를 등록합니다.
+    private void AddButtonListeners()
+    {
+        Button_Back.onClick.AddListener(() =>
+        {
+            MySceneManager.LoadScene(SceneName.Main_Scene);
+        });
+
+        Button_Home.onClick.AddListener(() =>
+        {
+            MySceneManager.LoadScene(SceneName.Main_Scene);
+        });
     }
 
     #endregion 커스텀 함수
