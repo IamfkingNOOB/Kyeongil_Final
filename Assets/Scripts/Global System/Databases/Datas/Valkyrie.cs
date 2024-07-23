@@ -13,10 +13,10 @@ public class Valkyrie
 
     // 속성
     public EntityType Type { get; set; } // 속성
-    public List<ValkyrieTrait> Traits { get; set; } // 특성
+    public List<ValkyrieTrait> Traits { get; set; } = new(); // 특성
 
     // 스탯 (플레이어)
-    public int RankID { get; set; } // 랭크
+    public int Rank { get; set; } // 랭크
     public int Level { get; set; } // 레벨
 
     // 스탯 (발키리)

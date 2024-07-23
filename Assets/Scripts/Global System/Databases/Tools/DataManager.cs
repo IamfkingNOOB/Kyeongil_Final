@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 using UnityEngine;
@@ -9,8 +10,8 @@ using UnityEngine;
 /// </summary>
 public static class DataManager
 {
-    // 외부 파일에 접근하기 위한 경로
-    private readonly static string _dataRootPath = "C:/...";
+    // 외부 파일에 접근하기 위한 경로; (Assets/Databases)
+    private readonly static string _dataRootPath = Path.Combine(Application.dataPath, "Databases");
 
     // 사용하고자 하는 데이터 목록
     private static Dictionary<int, Valkyrie> _valkyrieList; // 발키리 목록
@@ -23,7 +24,7 @@ public static class DataManager
     {
         get
         {
-            if (_valkyrieList == null)
+            if (_valkyrieList == null || _valkyrieList.Count == 0)
             {
                 ReadValkyrieTable(nameof(Valkyrie));
             }
@@ -36,7 +37,7 @@ public static class DataManager
     {
         get
         {
-            if (_weaponList == null)
+            if (_weaponList == null || _weaponList.Count == 0)
             {
                 ReadWeaponTable(nameof(Weapon));
             }
@@ -49,7 +50,7 @@ public static class DataManager
     {
         get
         {
-            if (_stigmataList == null)
+            if (_stigmataList == null || _stigmataList.Count == 0)
             {
                 ReadStigmataTable(nameof(Stigmata));
             }
@@ -64,24 +65,24 @@ public static class DataManager
     private static void ReadValkyrieTable(string tableName)
     {
         // 발키리 목록을 생성합니다.
-        _valkyrieList = new Dictionary<int, Valkyrie>();
+        _valkyrieList = new();
 
         // XML 파일을 읽어, 분석하여 저장합니다.
         XDocument xDocument = XDocument.Load($"{_dataRootPath}/{tableName}.xml");
-        IEnumerable<XElement> dataElements = xDocument.Descendants();
+        IEnumerable<XElement> dataElements = xDocument.Descendants("data");
 
         foreach (XElement dataElement in dataElements)
         {
-            Valkyrie valkyrie = new Valkyrie();
+            Valkyrie valkyrie = new();
 
             if (int.TryParse(dataElement.Attribute(nameof(valkyrie.ValkyrieID)).Value, out int id)) { valkyrie.ValkyrieID = id; }
             valkyrie.CharacterName = dataElement.Attribute(nameof(valkyrie.CharacterName)).Value;
             valkyrie.SuitName = dataElement.Attribute(nameof(valkyrie.SuitName)).Value;
 
-            if (Enum.TryParse(dataElement.Attribute(nameof(valkyrie.Type)).Value, out EntityType type)) { valkyrie.Type = type; }
-            valkyrie.Traits.AddRange(dataElement.Attribute(nameof(valkyrie.Traits)).Value.Split(',').Select(Enum.Parse<ValkyrieTrait>));
+            if (Enum.TryParse(dataElement.Attribute(nameof(valkyrie.Type)).Value.ToUpperInvariant(), out EntityType type)) { valkyrie.Type = type; }
+            valkyrie.Traits.AddRange(dataElement.Attribute(nameof(valkyrie.Traits)).Value.ToUpperInvariant().Split(',').Select(Enum.Parse<ValkyrieTrait>));
 
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.RankID)).Value, out int rank)) { valkyrie.RankID = rank; }
+            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.Rank)).Value, out int rank)) { valkyrie.Rank = rank; }
             if (int.TryParse(dataElement.Attribute(nameof(valkyrie.Level)).Value, out int level)) { valkyrie.Level = level; }
 
             if (int.TryParse(dataElement.Attribute(nameof(valkyrie.HP)).Value, out int hp)) { valkyrie.HP = hp; }
@@ -90,11 +91,11 @@ public static class DataManager
             if (int.TryParse(dataElement.Attribute(nameof(valkyrie.DEF)).Value, out int def)) { valkyrie.DEF = def; }
             if (int.TryParse(dataElement.Attribute(nameof(valkyrie.CRT)).Value, out int crt)) { valkyrie.CRT = crt; }
 
-            if (Enum.TryParse(dataElement.Attribute(nameof(valkyrie.EquipableWeaponType)).Value, out WeaponType weaponType)) { valkyrie.EquipableWeaponType = weaponType; }
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.WeaponID)).Value, out int weapon)) { valkyrie.WeaponID = _weaponList[weapon]; }
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.StigmataTopID)).Value, out int top)) { valkyrie.StigmataTopID = _stigmataList[top]; }
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.StigmataMiddleID)).Value, out int middle)) { valkyrie.StigmataMiddleID = _stigmataList[middle]; }
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.StigmataBottomID)).Value, out int bottom)) { valkyrie.StigmataBottomID = _stigmataList[bottom]; }
+            if (Enum.TryParse(dataElement.Attribute(nameof(valkyrie.EquipableWeaponType)).Value.ToUpperInvariant(), out WeaponType weaponType)) { valkyrie.EquipableWeaponType = weaponType; }
+            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.WeaponID)).Value, out int weapon)) { valkyrie.WeaponID = WeaponList[weapon]; }
+            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.StigmataTopID)).Value, out int top)) { valkyrie.StigmataTopID = StigmataList[top]; }
+            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.StigmataMiddleID)).Value, out int middle)) { valkyrie.StigmataMiddleID = StigmataList[middle]; }
+            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.StigmataBottomID)).Value, out int bottom)) { valkyrie.StigmataBottomID = StigmataList[bottom]; }
 
             valkyrie.LeaderSkill = dataElement.Attribute(nameof(valkyrie.LeaderSkill)).Value;
             valkyrie.Passive = dataElement.Attribute(nameof(valkyrie.Passive)).Value;
@@ -117,19 +118,19 @@ public static class DataManager
     private static void ReadWeaponTable(string tableName)
     {
         // 무기 목록을 생성합니다.
-        _weaponList = new Dictionary<int, Weapon>();
+        _weaponList = new();
 
         // XML 파일을 읽어, 분석하여 저장합니다.
         XDocument xDocument = XDocument.Load($"{_dataRootPath}/{tableName}.xml");
-        IEnumerable<XElement> dataElements = xDocument.Descendants();
+        IEnumerable<XElement> dataElements = xDocument.Descendants("data");
 
         foreach (XElement dataElement in dataElements)
         {
-            Weapon weapon = new Weapon();
+            Weapon weapon = new();
 
             if (int.TryParse(dataElement.Attribute(nameof(weapon.WeaponID)).Value, out int id)) { weapon.WeaponID = id; }
             weapon.Name = dataElement.Attribute(nameof(weapon.Name)).Value;
-            if (Enum.TryParse(dataElement.Attribute(nameof(weapon.Type)).Value, out WeaponType type)) { weapon.Type = type; }
+            if (Enum.TryParse(dataElement.Attribute(nameof(weapon.Type)).Value.ToUpperInvariant(), out WeaponType type)) { weapon.Type = type; }
 
             if (int.TryParse(dataElement.Attribute(nameof(weapon.Rank)).Value, out int rank)) { weapon.Rank = rank; }
             if (int.TryParse(dataElement.Attribute(nameof(weapon.Level)).Value, out int level)) { weapon.Level = level; }
@@ -152,19 +153,19 @@ public static class DataManager
     private static void ReadStigmataTable(string tableName)
     {
         // 성흔 목록을 생성합니다.
-        _stigmataList = new Dictionary<int, Stigmata>();
+        _stigmataList = new();
 
         // XML 파일을 읽어, 분석하여 저장합니다.
         XDocument xDocument = XDocument.Load($"{_dataRootPath}/{tableName}.xml");
-        IEnumerable<XElement> dataElements = xDocument.Descendants();
+        IEnumerable<XElement> dataElements = xDocument.Descendants("data");
 
         foreach (XElement dataElement in dataElements)
         {
-            Stigmata stigmata = new Stigmata();
+            Stigmata stigmata = new();
 
             if (int.TryParse(dataElement.Attribute(nameof(stigmata.StigmataID)).Value, out int id)) { stigmata.StigmataID = id; }
             stigmata.Name = dataElement.Attribute(nameof(stigmata.Name)).Value;
-            if (Enum.TryParse(dataElement.Attribute(nameof(stigmata.Position)).Value, out StigmataPosition position)) { stigmata.Position = position; }
+            if (Enum.TryParse(dataElement.Attribute(nameof(stigmata.Position)).Value.ToUpperInvariant(), out StigmataPosition position)) { stigmata.Position = position; }
 
             if (int.TryParse(dataElement.Attribute(nameof(stigmata.Rank)).Value, out int rank)) { stigmata.Rank = rank; }
             if (int.TryParse(dataElement.Attribute(nameof(stigmata.Level)).Value, out int level)) { stigmata.Level = level; }
@@ -182,7 +183,23 @@ public static class DataManager
             stigmata.Icon = Resources.Load<Sprite>(dataElement.Attribute(nameof(stigmata.Icon)).Value);
             stigmata.Model = Resources.Load<Sprite>(dataElement.Attribute(nameof(stigmata.Model)).Value);
 
+            Debug.Log("Model = " + stigmata.Model);
+
             _stigmataList.Add(stigmata.StigmataID, stigmata);
         }
+    }
+}
+
+// 문자열을 제목 형식(APPLE → Apple; 첫 글자는 대문자, 이후는 소문자)으로 변환해 주는 확장 메서드
+public static class StringExtensions
+{
+    public static string ToTitleInvariant(this string input)
+    {
+        if (!string.IsNullOrEmpty(input))
+        {
+            input = char.ToUpperInvariant(input[0]) + input[1..].ToLowerInvariant();
+        }
+
+        return input;
     }
 }

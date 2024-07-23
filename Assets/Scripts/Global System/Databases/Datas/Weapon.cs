@@ -21,7 +21,7 @@ public class Weapon
     public int CRT { get; set; } // 회심
 
     // 스킬
-    public List<string> Skills { get; set; } // 무기 스킬
+    public List<string> Skills { get; set; } = new(); // 무기 스킬
 
     // 설명
     public string Description { get; set; } // 설명문

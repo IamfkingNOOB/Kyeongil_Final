@@ -26,7 +26,7 @@ public class ValkyrieListItem : MonoBehaviour
         Image_Portrait.sprite = valkyrie.Portrait;
         Image_Portrait.preserveAspect = true;
 
-        Image_Rank.sprite = SetRankSprite(valkyrie.RankID);
+        Image_Rank.sprite = SetRankSprite(valkyrie.Rank);
         Text_Level.text = $"Lv.{valkyrie.Level}";
     }
 
@@ -34,7 +34,7 @@ public class ValkyrieListItem : MonoBehaviour
     public void OnClick()
     {
         _model.ValkyrieName = _valkyrie.CharacterName;
-        _model.Rank = SetRankSprite(_valkyrie.RankID);
+        _model.Rank = SetRankSprite(_valkyrie.Rank);
         _model.SuitName = _valkyrie.SuitName;
         _model.Level = $"Lv.{_valkyrie.Level}";
         _model.WeaponName = _valkyrie.WeaponID.Name;

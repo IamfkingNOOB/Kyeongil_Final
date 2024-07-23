@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Weapon>
+  <dataCategory>
+    <data WeaponID="110" Name="피의 상자·깊은 사랑" Type="Cross" Rank="6" Level="65" ATK="440" CRT="20" Skills="한여름 밤의 약속,붉은 달의 성루,바깥세상의 끝" Description="" Icon="Bloodied_Casket" Model="Bloodied_Casket" />
+    <data WeaponID="111" Name="항해의 닻: 별의 여행" Type="Cross" Rank="6" Level="65" ATK="436" CRT="23" Skills="성위 필드,별의 방위선,은하 비콘" Description="" Icon="Anchor_of_the_Voyage" Model="Anchor_of_the_Voyage" />
+  </dataCategory>
+</Weapon>
