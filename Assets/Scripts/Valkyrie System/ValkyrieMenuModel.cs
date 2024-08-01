@@ -6,20 +6,11 @@ using UnityEngine;
 /// </summary>
 public class ValkyrieMenuModel
 {
-    #region 프로퍼티 변경 이벤트
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    private void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    #endregion 프로퍼티 변경 이벤트
-
     #region 변수
 
-    private string _valkyrieName;
+    public Valkyrie SelectedValkyrie { get; set; }
+
+    private string _characterName;
     private Sprite _rank;
     private string _suitName;
     private string _level;
@@ -35,59 +26,82 @@ public class ValkyrieMenuModel
 
     #region 프로퍼티
 
-    public string ValkyrieName
+    public string CharacterName
     {
-        get { return _valkyrieName; }
-        set { _valkyrieName = value; OnPropertyChanged(nameof(ValkyrieName)); }
-    }
-
-    public Sprite Rank
-    {
-        get { return _rank; }
-        set { _rank = value; OnPropertyChanged(nameof(Rank)); }
+        get => _characterName;
+        set { _characterName = value; OnPropertyChanged(nameof(CharacterName)); }
     }
 
     public string SuitName
     {
-        get { return _suitName; }
+        get => _suitName;
         set { _suitName = value; OnPropertyChanged(nameof(SuitName)); }
     }
 
     public string Level
     {
-        get { return _level; }
+        get => _level;
         set { _level = value; OnPropertyChanged(nameof(Level)); }
+    }
+
+    public Sprite Rank
+    {
+        get => _rank;
+        set { _rank = value; OnPropertyChanged(nameof(Rank)); }
     }
 
     public string WeaponName
     {
-        get { return _weaponName; }
+        get => _weaponName;
         set { _weaponName = value; OnPropertyChanged(nameof(WeaponName)); }
     }
 
     public Sprite WeaponIcon
     {
-        get { return _weaponIcon; }
+        get => _weaponIcon;
         set { _weaponIcon = value; OnPropertyChanged(nameof(WeaponIcon)); }
     }
 
     public Sprite StigmataTop
     {
-        get { return _stigmataTop; }
+        get => _stigmataTop;
         set { _stigmataTop = value; OnPropertyChanged(nameof(StigmataTop)); }
     }
 
     public Sprite StigmataMiddle
     {
-        get { return _stigmataMiddle; }
+        get => _stigmataMiddle;
         set { _stigmataMiddle = value; OnPropertyChanged(nameof(StigmataMiddle)); }
     }
 
     public Sprite StigmataBottom
     {
-        get { return _stigmataBottom; }
+        get => _stigmataBottom;
         set { _stigmataBottom = value; OnPropertyChanged(nameof(StigmataBottom)); }
     }
 
     #endregion 프로퍼티
+
+    #region 프로퍼티 변경 이벤트
+
+    private event PropertyChangedEventHandler PropertyChanged;
+
+    private void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void AddPropertyChangedListener(bool isPositive, PropertyChangedEventHandler handler)
+    {
+        if (isPositive)
+        {
+            PropertyChanged += handler;
+        }
+        else
+        {
+            PropertyChanged -= handler;
+        }
+    }
+
+    #endregion 프로퍼티 변경 이벤트
 }

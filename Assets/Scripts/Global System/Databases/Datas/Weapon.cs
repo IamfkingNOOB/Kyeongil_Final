@@ -10,6 +10,7 @@ public class Weapon
     public int WeaponID { get; set; } // 식별자
     public string Name { get; set; } // 이름
     public WeaponType Type { get; set; } // 종류
+    public string WeaponTypeLocalizedName { get; set; } // 종류의 이름(명칭)
     
 
     // 스탯 (플레이어)
@@ -29,6 +30,50 @@ public class Weapon
     // 모델
     public Sprite Icon { get; set; }
     public GameObject Model { get; set; } // 프리팹 모델
+
+    private string GetTypeLocalizedName(WeaponType type)
+    {
+        string localizedName = string.Empty;
+
+        switch (type)
+        {
+            case WeaponType.PISTOL:
+                localizedName = "쌍권총";
+                break;
+            case WeaponType.BLADE:
+                localizedName = "태도";
+                break;
+            case WeaponType.HEAVY:
+                localizedName = "대포";
+                break;
+            case WeaponType.TWO_HANDED:
+                localizedName = "대검";
+                break;
+            case WeaponType.CROSS:
+                localizedName = "십자가";
+                break;
+            case WeaponType.FISTS:
+                localizedName = "건틀릿";
+                break;
+            case WeaponType.SCYTHE:
+                localizedName = "낫";
+                break;
+            case WeaponType.LANCE:
+                localizedName = "랜스";
+                break;
+            case WeaponType.BOW:
+                localizedName = "활";
+                break;
+            case WeaponType.CHAKRAM:
+                localizedName = "챠크람";
+                break;
+            case WeaponType.JAVLIN:
+                localizedName = "재블린";
+                break;
+        }
+
+        return localizedName;
+    }
 }
 
 public enum WeaponType

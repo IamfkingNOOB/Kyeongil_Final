@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 /// <summary>
@@ -6,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class Valkyrie
 {
+    #region 데이터
+
     // 식별자
     public int ValkyrieID { get; set; } // 식별자
     public string CharacterName { get; set; } // 캐릭터 이름
@@ -48,6 +51,44 @@ public class Valkyrie
     // 모델
     public Sprite Portrait { get; set; } // 초상화
     public GameObject Model { get; set; } // 모델
+
+    #endregion 데이터
+
+    #region 프로퍼티 변경 이벤트
+
+    // 전투 시 사용할 데이터
+    private int _currentHP;
+    private int _currentSP;
+
+    public int CurrentHP
+    {
+        get => _currentHP;
+        set
+        {
+            _currentHP = value;
+            OnPropertyChanged(nameof(CurrentHP));
+        }
+    }
+
+    public int CurrentSP
+    {
+        get => _currentSP;
+        set
+        {
+            _currentSP = value;
+            OnPropertyChanged(nameof(CurrentSP));
+        }
+    }
+
+    // 프로퍼티 변경 이벤트를 구현합니다.
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    private void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    #endregion 프로퍼티 변경 이벤트
 }
 
 public enum EntityType

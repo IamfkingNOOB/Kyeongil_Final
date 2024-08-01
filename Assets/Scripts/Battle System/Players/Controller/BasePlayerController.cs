@@ -29,22 +29,17 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
 {
     #region 변수(Field)
 
-    #region 상태 패턴(State Pattern)
+    // 발키리의 데이터를 가지는 클래스
+    private Valkyrie _valkyrieData;
 
     // 캐릭터의 현재 상태를 나타내는 인터페이스
     private IPlayerState _playerState;
-
-    #endregion 상태 패턴(State Pattern)
-
-    #region 이동
 
     // 캐릭터가 파티의 리더인지를 판별하기 위한 변수
     public bool IsLeader { get; set; } = false;
 
     // 카메라의 위치 값
     public Transform CameraTransform { get; private set; }
-
-    #endregion 이동
 
     #endregion 변수(Field)
 

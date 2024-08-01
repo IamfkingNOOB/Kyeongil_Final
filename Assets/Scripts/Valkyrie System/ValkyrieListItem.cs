@@ -14,8 +14,8 @@ public class ValkyrieListItem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI Text_Level;
 
     // 아이템이 가질 정보
-    private ValkyrieMenuModel _model; // 발키리 화면의 UI
-    private Valkyrie _valkyrie; // 발키리 정보
+    private ValkyrieMenuModel _model; // 발키리 화면의 모델(UI)
+    private Valkyrie _valkyrie; // 각 아이템이 가지는 발키리 정보
 
     // 생성할 때 호출하여, 각종 정보를 초기화합니다.
     public void Initialize(ValkyrieMenuModel model, Valkyrie valkyrie)
@@ -30,10 +30,12 @@ public class ValkyrieListItem : MonoBehaviour
         Text_Level.text = $"Lv.{valkyrie.Level}";
     }
 
-    // 아이템을 클릭할 때 호출하여, UI(View)에 그 정보를 출력합니다.
+    // 클릭 이벤트; 모델에 클릭한 발키리의 정보를 전달합니다.
     public void OnClick()
     {
-        _model.ValkyrieName = _valkyrie.CharacterName;
+        _model.SelectedValkyrie = _valkyrie;
+
+        _model.CharacterName = _valkyrie.CharacterName;
         _model.Rank = SetRankSprite(_valkyrie.Rank);
         _model.SuitName = _valkyrie.SuitName;
         _model.Level = $"Lv.{_valkyrie.Level}";
