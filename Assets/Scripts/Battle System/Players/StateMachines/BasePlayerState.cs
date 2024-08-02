@@ -55,6 +55,12 @@ public abstract class BasePlayerState : IPlayerState
     // Ultimate
     protected readonly int _ultimate_AnimatorHash = Animator.StringToHash("Ultimate");
 
+    // Hit
+    protected readonly int _hit_AnimatorHash = Animator.StringToHash("Hit");
+
+    // Die
+    protected readonly int _die_AnimatorHash = Animator.StringToHash("Die");
+
     #endregion
 
     #region 애니메이션의 전환에 필요한 변수

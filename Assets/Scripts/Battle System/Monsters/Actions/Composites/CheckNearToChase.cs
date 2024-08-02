@@ -1,7 +1,7 @@
 using BehaviourTree;
 using UnityEngine;
 
-namespace Monster
+namespace Enemy
 {
     public class CheckNearToChase : Node
     {
@@ -12,7 +12,8 @@ namespace Monster
 
         #endregion 변수
 
-        // 생성자
+        #region 생성자
+
         public CheckNearToChase(Monster monster)
         {
             _monster = monster;
@@ -20,6 +21,10 @@ namespace Monster
             // 플레이어는 생성자의 호출 시점에서 FindAnyObjectByType 함수를 사용하여 찾습니다. (FindAnyObjectByType이 Find 함수 중 성능이 가장 뛰어납니다.)
             _playerTransform = Object.FindAnyObjectByType<BasePlayerController>().transform;
         }
+
+        #endregion 생성자
+
+        #region 행동 트리 함수
 
         // 평가 함수
         public override NodeState Evaluate()
@@ -32,6 +37,10 @@ namespace Monster
             return state;
         }
 
+        #endregion 행동 트리 함수
+
+        #region 커스텀 함수
+
         /// <summary>
         /// 몬스터와 플레이어 사이의 거리를 계산합니다.
         /// </summary>
@@ -41,8 +50,8 @@ namespace Monster
         private float CalculateDistance(Vector3 monster, Vector3 player)
         {
             // 거리 계산 시 y축(상하)는 계산하지 않습니다.
-            Vector3 MonsterTransform = new Vector3(monster.x, 0, monster.z);
-            Vector3 playerTransform = new Vector3(player.x, 0, player.z);
+            Vector3 MonsterTransform = new(monster.x, 0, monster.z);
+            Vector3 playerTransform = new(player.x, 0, player.z);
 
             // 적과 플레이어 사이의 거리를 계산하여, 반환합니다.
             float distance = Vector3.Distance(MonsterTransform, playerTransform);
@@ -70,5 +79,7 @@ namespace Monster
                 return NodeState.FAILURE;
             }
         }
+
+        #endregion 커스텀 함수
     }
 }

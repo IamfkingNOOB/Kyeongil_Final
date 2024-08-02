@@ -121,7 +121,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: e9f8f39b2b596bc40a94b75d86353550, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1001 &1580966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8164,7 +8164,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 08dae44dd8bd9b540876e178d676d273, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: e4d95e7bef18ecc42afe655c70c576a7, type: 2}
+      objectReference: {fileID: 9100000, guid: 32ed3e45270b1704c8847b05dfeb899c, type: 2}
     - target: {fileID: 5866666021909216657, guid: 08dae44dd8bd9b540876e178d676d273, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
@@ -10701,7 +10701,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 32ed3e45270b1704c8847b05dfeb899c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -10721,7 +10721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27cdb0f9c4d6424449e15a0ad917202b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 6ba826c3b6fc1d744bce30dc15bb6b3a, type: 2}
 --- !u!114 &1674960651
 MonoBehaviour:
   m_ObjectHideFlags: 0

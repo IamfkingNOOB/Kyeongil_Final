@@ -2,67 +2,60 @@ using BehaviourTree;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Monster
+namespace Enemy
 {
-    // 몬스터(Monster)의 행동 트리(Behaviour Tree) 클래스
-    public class MonsterBehaviourTree : MonoBehaviour
+    /// <summary>
+    /// 몬스터(Monster)의 행동 트리(Behaviour Tree)를 정의하는 클래스입니다.
+    /// </summary>
+    public class MonsterBT : MonoBehaviour
     {
+        #region 변수
+
         // 몬스터(Monster) 객체
         private Monster _monster;
 
         // 뿌리(Root) 노드
-        private Node rootNode;
+        private Node _rootNode;
 
+        #endregion 변수
+
+        #region 유니티 생명 주기 함수
+
+        // Awake
         private void Awake()
         {
             // 생성 시 자신의 Monster(를 상속받는 클래스) 스크립트를 컴포넌트에서 참조합니다.
-            TryGetComponent(out _monster);
-
-            // 행동 트리를 작성한다.
-            rootNode = SetBehaviourTree();
+            if (TryGetComponent(out _monster))
+            {
+                // 행동 트리를 작성한다.
+                _rootNode = SetBT();
+            }
         }
 
+        // Update
         private void Update()
         {
             // 매 프레임마다 상태를 평가합니다.
-            rootNode.Evaluate();
+            _rootNode?.Evaluate();
         }
 
+        #endregion 유니티 생명 주기 함수
+
+        #region 커스텀 함수
+
         // 행동 트리를 작성합니다.
-        public Node SetBehaviourTree()
+        private Node SetBT()
         {
             /*
-                                                   Root
-                                                     ┃
-                                                 Selector
-                                 ┏━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━┓
-                             Sequence                               Selector
-                        ┏━━━━━━━━┻━━━━━━━━┓            ┏━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┓
-                CheckIsPossessed → BeingPossessed  Sequence                          Selector
-                                                  ┏━━━━┻━━━━┓       ┏━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-                                             CheckIsDead → Die  Sequence                                                         Selector
-                                                              ┏━━━━━┻━━━━━┓                      ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━┓
-                                                         CheckGetHit → GetHit                Sequence                            Sequence                   Patrol
-                                                                           ┏━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━┓            ┏━━━━━━┻━━━━━┓
-                                                                   CheckNearToAttack → CheckForwardToAttack → Attack  CheckNearToChase → Chase
-
-
-            아래와 같이 변경.
-
-													                Root
-													                  ┃
-												                  Selector
-					                ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-				                Selector                                                           Selector
-		                 ┏━━━━━━━━━━┻━━━━━━━━━━┓                          ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-	                 Sequence              Sequence                   Sequence                                                  Selector
-	                 ┏━━━┻━━━━━┓        ┏━━━━━━┻━━━━┓            ┏━━━━━━━━┻━━━━━━━━┓            ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━┓
-                CheckIsDead → Die  CheckGetHit → GetHit  CheckIsPossessed → BeingPossessed  Sequence                            Sequence       Patrol
-														                  ┏━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━┓            ┏━━━━━━┻━━━━━┓
-												                  CheckNearToAttack → CheckForwardToAttack → Attack  CheckNearToChase → Chase
-
-
-
+													                 Root
+													                   ┃
+												                   Selector
+				             ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+			             Selector                                                                             Selector
+		            ┏━━━━━━━━┻━━━━━━━━┓                                       ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━┓
+	            Sequence          Sequence                                Sequence                            Sequence       Patrol
+	            ┏━━━┻━━━━┓       ┏━━━━┻━━━━┓            ┏━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━┓            ┏━━━━━━┻━━━━━┓
+            CheckDead → Die  CheckHit → GetHit  CheckNearToAttack → CheckForwardToAttack → Attack  CheckNearToChase → Chase
             */
 
             // 0. 뿌리 노드(Selector)
@@ -105,5 +98,7 @@ namespace Monster
             // 작성한 노드를 반환합니다.
             return node;
         }
+
+        #endregion 커스텀 함수
     }
 }

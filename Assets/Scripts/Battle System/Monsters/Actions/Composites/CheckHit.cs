@@ -1,20 +1,29 @@
 using BehaviourTree;
 
-namespace Monster
+namespace Enemy
 {
     /// <summary>
     /// 몬스터가 피격했는지를 판별하는 클래스입니다.
     /// </summary>
     public class CheckHit : Node
     {
+        #region 변수
+
         // 몬스터(Monster) 클래스
         private readonly Monster _monster;
 
-        // 생성자
+        #endregion 변수
+
+        #region 생성자
+
         public CheckHit(Monster monster)
         {
             _monster = monster;
         }
+
+        #endregion 생성자
+
+        #region 행동 트리 함수
 
         // 평가 함수
         public override NodeState Evaluate()
@@ -26,5 +35,7 @@ namespace Monster
             state = (isHit) ? NodeState.SUCCESS : NodeState.FAILURE;
             return state;
         }
+
+        #endregion 행동 트리 함수
     }
 }

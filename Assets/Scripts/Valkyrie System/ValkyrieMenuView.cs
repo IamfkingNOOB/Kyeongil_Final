@@ -163,7 +163,7 @@ public class ValkyrieMenuView : MonoBehaviour
 
         _selectButton.onClick.AddListener(() =>
         {
-            ValkyrieSelector.Instance.SelectedValkyrie = _model.SelectedValkyrie;
+            PlayData.Instance.SelectedValkyrie = _model.SelectedValkyrie;
         });
     }
 

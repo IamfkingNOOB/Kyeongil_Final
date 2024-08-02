@@ -30,7 +30,7 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
     #region 변수(Field)
 
     // 발키리의 데이터를 가지는 클래스
-    private Valkyrie _valkyrieData;
+    public Valkyrie _valkyrieData;
 
     // 캐릭터의 현재 상태를 나타내는 인터페이스
     private IPlayerState _playerState;
@@ -62,6 +62,29 @@ public abstract class BasePlayerController : MonoBehaviour, IPlayerController
     }
 
     #endregion 유니티 생명 주기 함수(Unity Life Cycle Method)
+
+    #region 유니티 충돌 이벤트 함수
+
+    // 몬스터의 공격에 피격했을 때 호출합니다.
+    private void OnTriggerEnter(Collider other)
+    {
+        // 피격시킨 대상이 몬스터일 때,
+        if (other.CompareTag("Monster"))
+        {
+            // 현재 플레이어가 회피 중이라면,
+            if (_playerState is PlayerEvadeState)
+            {
+                // 피격하지 않고, 시공 단열을 엽니다.
+            }
+            else // 아니라면,
+            {
+                // 피격 상태가 됩니다.
+                ChangeState(new PlayerHitState(this));
+            }
+        }
+    }
+
+    #endregion 유니티 충돌 이벤트 함수
 
     #region 커스텀 함수
 

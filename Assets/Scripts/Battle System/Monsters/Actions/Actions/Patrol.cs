@@ -3,8 +3,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Monster
+namespace Enemy
 {
+    /// <summary>
+    /// 몬스터의 순찰을 구현하는 클래스입니다.
+    /// </summary>
     public class Patrol : Node
     {
         #region 변수
@@ -24,30 +27,36 @@ namespace Monster
 
         #endregion 변수
 
-        // 생성자
+        #region 생성자
+
         public Patrol(Monster monster)
         {
             _monster = monster;
 
             // GetComponent 함수는 비용이 크므로, 매 프레임마다 호출되는 평가 함수에서 호출하지 않도록 합니다.
-            monster.TryGetComponent(out _animator);
-            monster.TryGetComponent(out _navMeshAgent);
+            _monster.TryGetComponent(out _animator);
+            _monster.TryGetComponent(out _navMeshAgent);
 
             // 순찰할 위치는 생성자의 호출 시점에서 FindAnyObjectByType 함수를 사용하여 찾습니다. (FindAnyObjectByType이 Find 함수 중 성능이 가장 뛰어납니다.)
-            _patrolTransforms = Object.FindAnyObjectByType<StageManager>().PatrolTransforms;
+            StageManager stageManager = Object.FindAnyObjectByType<StageManager>();
+            _patrolTransforms = stageManager != null ? stageManager.PatrolTransforms : null;
         }
+
+        #endregion 생성자
+
+        #region 행동 트리 함수
 
         // 평가 함수
         public override NodeState Evaluate()
         {
-            Debug.Log("Patrol!");
-
             // 순찰을 수행합니다.
             DoPatrol();
 
             // 성공 상태를 반환합니다.
             return NodeState.SUCCESS;
         }
+
+        #endregion 행동 트리 함수
 
         #region 커스텀 함수
 
@@ -66,7 +75,7 @@ namespace Monster
             if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance && !_isWaiting)
             {
                 // 일정 시간 동안 기다립니다. (약 5초)
-                _monster.StartCoroutine(Wait(5));
+                _monster.StartCoroutine(Wait(5.0f));
             }
         }
 

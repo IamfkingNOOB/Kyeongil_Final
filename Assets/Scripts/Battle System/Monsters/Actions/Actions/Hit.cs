@@ -2,7 +2,7 @@ using BehaviourTree;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Monster
+namespace Enemy
 {
     /// <summary>
     /// 몬스터의 피격을 구현하는 클래스입니다.
@@ -20,15 +20,20 @@ namespace Monster
 
         #endregion 변수
 
-        // 생성자
+        #region 생성자
+
         public Hit(Monster monster)
         {
             _monster = monster;
 
             // GetComponent 함수는 비용이 크므로, 매 프레임마다 호출되는 평가 함수에서 호출하지 않도록 합니다.
-            monster.TryGetComponent(out _animator);
-            monster.TryGetComponent(out _navMeshAgent);
+            _monster.TryGetComponent(out _animator);
+            _monster.TryGetComponent(out _navMeshAgent);
         }
+
+        #endregion 생성자
+
+        #region 행동 트리 함수
 
         // 평가 함수
         public override NodeState Evaluate()
@@ -39,6 +44,8 @@ namespace Monster
             // 성공 상태를 반환합니다.
             return NodeState.SUCCESS;
         }
+
+        #endregion 행동 트리 함수
 
         #region 커스텀 함수
 
