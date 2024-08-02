@@ -25,4 +25,20 @@ public class ValkyrieAttacker : MonoBehaviour
             // _player.SP += 1;
         }
     }
+
+    private void SetDamage()
+    {
+        // 대미지 계산 공식!
+        // 스킬 대미지: 공격력 * 스킬 계수
+        // 물리 대미지 증가 공식: 공격력 * 스킬 계수 * ( 1 + 댐증 + 댐증 + 댐증 + ... )
+        // 크리 대미지: 200%
+        // 방어력: 방어력 / 방어력 + 1000
+        // 상성: +-30%
+        // 회심: 회심 / 75 + (레벨 * 5)
+
+        float critialPercentage = (_player._valkyrieData.CRT / 75) + (_player._valkyrieData.Level * 5);
+        bool isCritical = (Random.value < critialPercentage) ? true : false;
+
+        int totalDamage = _player._valkyrieData.ATK;
+    }
 }
