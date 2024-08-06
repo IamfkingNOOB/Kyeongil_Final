@@ -14,13 +14,13 @@ public class DataManager : Singleton<DataManager>
     private readonly string _dataRootPath = Path.Combine(Application.dataPath, "Databases");
 
     // 사용하고자 하는 데이터 목록
-    private Dictionary<int, Valkyrie> _valkyrieList; // 발키리 목록
+    private Dictionary<int, ValkyrieData> _valkyrieList; // 발키리 목록
     private Dictionary<int, Weapon> _weaponList; // 무기 목록
     private Dictionary<int, Stigmata> _stigmataList; // 성흔 목록
 
     #region 프로퍼티(Property)
 
-    public Dictionary<int, Valkyrie> ValkyrieList
+    public Dictionary<int, ValkyrieData> ValkyrieList
     {
         get
         {
@@ -73,44 +73,50 @@ public class DataManager : Singleton<DataManager>
 
         foreach (XElement dataElement in dataElements)
         {
-            Valkyrie valkyrie = new();
+            ValkyrieDataStruct data = new();
 
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.ValkyrieID)).Value, out int id)) { valkyrie.ValkyrieID = id; }
-            valkyrie.CharacterName = dataElement.Attribute(nameof(valkyrie.CharacterName)).Value;
-            valkyrie.SuitName = dataElement.Attribute(nameof(valkyrie.SuitName)).Value;
+            // Valkyrie valkyrie = new();
 
-            if (Enum.TryParse(dataElement.Attribute(nameof(valkyrie.Type)).Value.ToUpperInvariant(), out EntityType type)) { valkyrie.Type = type; }
-            valkyrie.Traits.AddRange(dataElement.Attribute(nameof(valkyrie.Traits)).Value.ToUpperInvariant().Split(',').Select(Enum.Parse<ValkyrieTrait>));
+            if (int.TryParse(dataElement.Attribute(nameof(data.ValkyrieID)).Value, out int id)) { data.ValkyrieID = id; }
+            data.CharacterName = dataElement.Attribute(nameof(data.CharacterName)).Value;
+            data.SuitName = dataElement.Attribute(nameof(data.SuitName)).Value;
 
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.Rank)).Value, out int rank)) { valkyrie.Rank = rank; }
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.Level)).Value, out int level)) { valkyrie.Level = level; }
+            if (Enum.TryParse(dataElement.Attribute(nameof(data.Type)).Value.ToUpperInvariant(), out EntityType type)) { data.Type = type; }
 
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.HP)).Value, out int hp)) { valkyrie.HP = hp; }
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.SP)).Value, out int sp)) { valkyrie.SP = sp; }
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.ATK)).Value, out int atk)) { valkyrie.ATK = atk; }
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.DEF)).Value, out int def)) { valkyrie.DEF = def; }
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.CRT)).Value, out int crt)) { valkyrie.CRT = crt; }
+            data.Traits = new();
+            data.Traits.AddRange(dataElement.Attribute(nameof(data.Traits)).Value.ToUpperInvariant().Split(',').Select(Enum.Parse<ValkyrieTrait>));
 
-            if (Enum.TryParse(dataElement.Attribute(nameof(valkyrie.EquipableWeaponType)).Value.ToUpperInvariant(), out WeaponType weaponType)) { valkyrie.EquipableWeaponType = weaponType; }
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.WeaponID)).Value, out int weapon)) { valkyrie.WeaponID = WeaponList[weapon]; }
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.StigmataTopID)).Value, out int top)) { valkyrie.StigmataTopID = StigmataList[top]; }
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.StigmataMiddleID)).Value, out int middle)) { valkyrie.StigmataMiddleID = StigmataList[middle]; }
-            if (int.TryParse(dataElement.Attribute(nameof(valkyrie.StigmataBottomID)).Value, out int bottom)) { valkyrie.StigmataBottomID = StigmataList[bottom]; }
+            if (int.TryParse(dataElement.Attribute(nameof(data.Rank)).Value, out int rank)) { data.Rank = rank; }
+            if (int.TryParse(dataElement.Attribute(nameof(data.Level)).Value, out int level)) { data.Level = level; }
 
-            valkyrie.LeaderSkill = dataElement.Attribute(nameof(valkyrie.LeaderSkill)).Value;
-            valkyrie.Passive = dataElement.Attribute(nameof(valkyrie.Passive)).Value;
-            valkyrie.Evasion = dataElement.Attribute(nameof(valkyrie.Evasion)).Value;
-            valkyrie.WeaponSkill = dataElement.Attribute(nameof(valkyrie.WeaponSkill)).Value;
-            valkyrie.BasicATK = dataElement.Attribute(nameof(valkyrie.BasicATK)).Value;
-            valkyrie.Ultimate = dataElement.Attribute(nameof(valkyrie.Ultimate)).Value;
-            valkyrie.SpecialATK = dataElement.Attribute(nameof(valkyrie.SpecialATK)).Value;
+            if (int.TryParse(dataElement.Attribute(nameof(data.HP)).Value, out int hp)) { data.HP = hp; }
+            if (int.TryParse(dataElement.Attribute(nameof(data.SP)).Value, out int sp)) { data.SP = sp; }
+            if (int.TryParse(dataElement.Attribute(nameof(data.ATK)).Value, out int atk)) { data.ATK = atk; }
+            if (int.TryParse(dataElement.Attribute(nameof(data.DEF)).Value, out int def)) { data.DEF = def; }
+            if (int.TryParse(dataElement.Attribute(nameof(data.CRT)).Value, out int crt)) { data.CRT = crt; }
 
-            valkyrie.Description = dataElement.Attribute(nameof(valkyrie.Description)).Value;
+            if (Enum.TryParse(dataElement.Attribute(nameof(data.EquipableWeaponType)).Value.ToUpperInvariant(), out WeaponType weaponType)) { data.EquipableWeaponType = weaponType; }
+            if (int.TryParse(dataElement.Attribute(nameof(data.WeaponID)).Value, out int weapon)) { data.WeaponID = WeaponList[weapon]; }
+            if (int.TryParse(dataElement.Attribute(nameof(data.StigmataTopID)).Value, out int top)) { data.StigmataTopID = StigmataList[top]; }
+            if (int.TryParse(dataElement.Attribute(nameof(data.StigmataMiddleID)).Value, out int middle)) { data.StigmataMiddleID = StigmataList[middle]; }
+            if (int.TryParse(dataElement.Attribute(nameof(data.StigmataBottomID)).Value, out int bottom)) { data.StigmataBottomID = StigmataList[bottom]; }
 
-            valkyrie.Portrait = Resources.Load<Sprite>(dataElement.Attribute(nameof(valkyrie.Portrait)).Value);
-            valkyrie.Model = Resources.Load<GameObject>(dataElement.Attribute(nameof(valkyrie.Model)).Value);
+            data.LeaderSkill = dataElement.Attribute(nameof(data.LeaderSkill)).Value;
+            data.Passive = dataElement.Attribute(nameof(data.Passive)).Value;
+            data.Evasion = dataElement.Attribute(nameof(data.Evasion)).Value;
+            data.WeaponSkill = dataElement.Attribute(nameof(data.WeaponSkill)).Value;
+            data.BasicATK = dataElement.Attribute(nameof(data.BasicATK)).Value;
+            data.Ultimate = dataElement.Attribute(nameof(data.Ultimate)).Value;
+            data.SpecialATK = dataElement.Attribute(nameof(data.SpecialATK)).Value;
 
-            _valkyrieList.Add(valkyrie.ValkyrieID, valkyrie);
+            data.Description = dataElement.Attribute(nameof(data.Description)).Value;
+
+            data.Portrait = Resources.Load<Sprite>(dataElement.Attribute(nameof(data.Portrait)).Value);
+            data.Model = Resources.Load<GameObject>(dataElement.Attribute(nameof(data.Model)).Value);
+
+            ValkyrieData valkyrieData = new(data);
+
+            _valkyrieList.Add(valkyrieData.ValkyrieID, valkyrieData);
         }
     }
 
@@ -202,4 +208,45 @@ public static class StringExtensions
 
         return input;
     }
+}
+
+// 생성자로 전달할 데이터; 하나의 매개변수만을 사용하고자 구조체로 묶는다.
+public struct ValkyrieDataStruct
+{
+    public int ValkyrieID;
+    public string CharacterName;
+    public string SuitName;
+
+    public EntityType Type;
+    public List<ValkyrieTrait> Traits;
+
+    public int Rank;
+    public int Level;
+
+    public WeaponType EquipableWeaponType;
+
+    public Weapon WeaponID;
+    public Stigmata StigmataTopID;
+    public Stigmata StigmataMiddleID;
+    public Stigmata StigmataBottomID;
+
+    public string LeaderSkill;
+    public string Passive;
+    public string Evasion;
+    public string WeaponSkill;
+    public string BasicATK;
+    public string Ultimate;
+    public string SpecialATK;
+
+    public string Description;
+
+    public Sprite Portrait;
+    public GameObject Model;
+
+    public int HP;
+    public int SP;
+    public int ATK;
+    public int DEF;
+    public int CRT;
+    public int UltimateCost;
 }

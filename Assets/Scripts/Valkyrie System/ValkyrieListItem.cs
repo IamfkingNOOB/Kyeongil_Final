@@ -15,10 +15,10 @@ public class ValkyrieListItem : MonoBehaviour
 
     // 아이템이 가질 정보
     private ValkyrieMenuModel _model; // 발키리 화면의 모델(UI)
-    private Valkyrie _valkyrie; // 각 아이템이 가지는 발키리 정보
+    private ValkyrieData _valkyrie; // 각 아이템이 가지는 발키리 정보
 
     // 생성할 때 호출하여, 각종 정보를 초기화합니다.
-    public void Initialize(ValkyrieMenuModel model, Valkyrie valkyrie)
+    public void Initialize(ValkyrieMenuModel model, ValkyrieData valkyrie)
     {
         _model = model;
         _valkyrie = valkyrie;

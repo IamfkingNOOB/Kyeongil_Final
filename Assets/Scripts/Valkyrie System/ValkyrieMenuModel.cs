@@ -4,11 +4,11 @@ using UnityEngine;
 /// <summary>
 /// 발키리 화면에서, 데이터를 관리하는 클래스입니다.
 /// </summary>
-public class ValkyrieMenuModel
+public class ValkyrieMenuModel // = Selected Valkyrie
 {
     #region 변수
 
-    public Valkyrie SelectedValkyrie { get; set; }
+    public ValkyrieData SelectedValkyrie { get; set; }
 
     private string _characterName;
     private Sprite _rank;

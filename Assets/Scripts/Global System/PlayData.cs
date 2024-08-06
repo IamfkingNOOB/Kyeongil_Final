@@ -4,7 +4,7 @@
 public class PlayData : Singleton<PlayData>
 {
     // 발키리 선택 화면에서 선택한 발키리
-    public Valkyrie SelectedValkyrie { get; set; }
+    public ValkyrieData SelectedValkyrie { get; set; }
 
 
 }

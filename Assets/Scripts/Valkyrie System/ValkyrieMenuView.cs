@@ -132,10 +132,10 @@ public class ValkyrieMenuView : MonoBehaviour
     private void UpdateListItem(ScrollRect scrollRect)
     {
         // 발키리 목록을 가져옵니다.
-        Dictionary<int, Valkyrie> valkyrieList = DataManager.Instance.ValkyrieList;
+        Dictionary<int, ValkyrieData> valkyrieList = DataManager.Instance.ValkyrieList;
 
         // 발키리 목록을 순회하면서,
-        foreach (Valkyrie valkyrie in valkyrieList.Values)
+        foreach (ValkyrieData valkyrie in valkyrieList.Values)
         {
             // 스크롤 뷰의 컨텐츠 영역에 아이템을 생성하고,
             GameObject newItem = Instantiate(_listItem, scrollRect.content);
