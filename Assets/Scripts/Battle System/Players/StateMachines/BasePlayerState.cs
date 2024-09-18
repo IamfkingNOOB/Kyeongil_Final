@@ -47,6 +47,7 @@ public abstract class BasePlayerState : IPlayerState
     
     // Attack
     protected readonly int _attack_AnimatorHash = Animator.StringToHash("Attack");
+    protected readonly int _qte_AnimatorHash = Animator.StringToHash("QTE");
     
     // Weapon
     protected readonly int _weapon_AnimatorHash = Animator.StringToHash("Weapon");
@@ -58,14 +59,12 @@ public abstract class BasePlayerState : IPlayerState
 
     #region 애니메이션의 전환에 필요한 변수
 
-    // 선입력 대기 시간; 현재의 필수 행동이 실행되는 동안 다음 행동으로의 입력을 미리 할 수 있는 시간
-    protected float _preInputDelay = 0.0f;
-    // 후입력 가능 시간; 선입력 대기 시간 이후, 현재의 연계 행동으로 전환할 수 있는 입력의 최대 시간
-    protected float _postInputDelay = 0.9f;
-    protected Action _preInput; // 선입력 행동
-    protected bool _isInTransition = false; // 애니메이션의 전환 여부; 선입력 이후에 입력에 대한 호출의 중복을 방지하기 위한 변수
+    protected bool _isPreInputTime = true; // 현재 선입력 시간인지를 판별하는 변수
+    protected Action _preInputAction; // 선입력으로 들어간 예약 행동
 
-    protected Vector2 _inputVector; // 방향키 입력
+    // protected bool _isInTransition = false; // 애니메이션의 전환 여부; 선입력 이후에 입력에 대한 호출의 중복을 방지하기 위한 변수
+
+    protected Vector2 _inputVector; // 이동 입력(방향키)에 대한 변수; 상태 전환 간 값을 유지하기 위해 이곳에서 정의합니다.
 
     #endregion 애니메이션의 전환에 필요한 변수
 
@@ -95,4 +94,27 @@ public abstract class BasePlayerState : IPlayerState
     public abstract void OnUltimate();
 
     #endregion 인터페이스 상속 함수
+
+    #region 커스텀 함수
+
+    // 애니메이션 이벤트; 각 애니메이션 클립에서, 선입력에 대한 처리를 정의하여 실행합니다. (클립마다 선입력의 시점이나 후속 처리가 전부 다릅니다.)
+    private void ExecutePreInput()
+    {
+        _isPreInputTime = false; // 선입력 시간을 종료하고,
+        _preInputAction?.Invoke(); // 선입력된 값이 있을 경우, 호출합니다.
+        _preInputAction = null; // 선입력된 값을 초기화합니다.
+    }
+
+    // Standby 이외의 상태에서, Standby 상태로의 전환을 확인합니다. (다른 상태에서 가만히 있을 경우 스스로 Standby 상태로 전환합니다.)
+    protected void CheckTransitionToStandby()
+    {
+        // 현재 재생 중인 애니메이션이 Standby라면,
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Standby"))
+        {
+            // Standby 상태에 들어갑니다. (Standby 애니메이션의 재생은 FSM의 Exit Time 값을 설정하여 적용합니다.)
+            _playerController.ChangeState(new PlayerStandbyState(_playerController));
+        }
+    }
+
+    #endregion 커스텀 함수
 }

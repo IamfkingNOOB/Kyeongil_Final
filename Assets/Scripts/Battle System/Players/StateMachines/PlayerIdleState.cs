@@ -93,17 +93,6 @@ public class PlayerIdleState : BasePlayerState
         _animator.SetTrigger(_idle_AnimatorHash);
     }
 
-    // Standby 상태로의 전환을 확인합니다.
-    private void CheckTransitionToStandby()
-    {
-        // 만약 Standby 상태로 전환 중이라면, (Has Exit Time에 의한 자동 전환)
-        if (_animator.GetAnimatorTransitionInfo(0).IsUserName("[Exit] Idle -> Standby"))
-        {
-            // Standby 상태에 진입합니다.
-            _playerController.ChangeState(new PlayerStandbyState(_playerController));
-        }
-    }
-
     #endregion 커스텀 함수
 
     #endregion 함수

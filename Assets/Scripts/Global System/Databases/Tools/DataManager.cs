@@ -8,19 +8,19 @@ using UnityEngine;
 /// <summary>
 /// 외부 파일에 접근하여, 필요한 데이터를 추출하고 보관하기 위한 클래스입니다.
 /// </summary>
-public static class DataManager
+public class DataManager : Singleton<DataManager>
 {
     // 외부 파일에 접근하기 위한 경로; (Assets/Databases)
-    private readonly static string _dataRootPath = Path.Combine(Application.dataPath, "Databases");
+    private readonly string _dataRootPath = Path.Combine(Application.dataPath, "Databases");
 
     // 사용하고자 하는 데이터 목록
-    private static Dictionary<int, Valkyrie> _valkyrieList; // 발키리 목록
-    private static Dictionary<int, Weapon> _weaponList; // 무기 목록
-    private static Dictionary<int, Stigmata> _stigmataList; // 성흔 목록
+    private Dictionary<int, Valkyrie> _valkyrieList; // 발키리 목록
+    private Dictionary<int, Weapon> _weaponList; // 무기 목록
+    private Dictionary<int, Stigmata> _stigmataList; // 성흔 목록
 
     #region 프로퍼티(Property)
 
-    public static Dictionary<int, Valkyrie> ValkyrieList
+    public Dictionary<int, Valkyrie> ValkyrieList
     {
         get
         {
@@ -33,7 +33,7 @@ public static class DataManager
         }
     }
 
-    public static Dictionary<int, Weapon> WeaponList
+    public Dictionary<int, Weapon> WeaponList
     {
         get
         {
@@ -46,7 +46,7 @@ public static class DataManager
         }
     }
 
-    public static Dictionary<int, Stigmata> StigmataList
+    public Dictionary<int, Stigmata> StigmataList
     {
         get
         {
@@ -62,7 +62,7 @@ public static class DataManager
     #endregion 프로퍼티(Property)
 
     // 발키리의 데이터를 읽어내어 저장합니다.
-    private static void ReadValkyrieTable(string tableName)
+    private void ReadValkyrieTable(string tableName)
     {
         // 발키리 목록을 생성합니다.
         _valkyrieList = new();
@@ -115,7 +115,7 @@ public static class DataManager
     }
 
     // 무기의 데이터를 읽어내어 저장합니다.
-    private static void ReadWeaponTable(string tableName)
+    private void ReadWeaponTable(string tableName)
     {
         // 무기 목록을 생성합니다.
         _weaponList = new();
@@ -150,7 +150,7 @@ public static class DataManager
     }
 
     // 성흔의 데이터를 읽어내어 저장합니다.
-    private static void ReadStigmataTable(string tableName)
+    private void ReadStigmataTable(string tableName)
     {
         // 성흔 목록을 생성합니다.
         _stigmataList = new();

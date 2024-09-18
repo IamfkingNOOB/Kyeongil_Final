@@ -46,7 +46,7 @@ public class MainValkyrie : MonoBehaviour
     private Valkyrie GetAlreadySetMainValkyrie(int playerPrefs)
     {
         // 발키리 목록을 가져옵니다.
-        Dictionary<int, Valkyrie> valkyrieList = DataManager.ValkyrieList;
+        Dictionary<int, Valkyrie> valkyrieList = DataManager.Instance.ValkyrieList;
 
         Valkyrie valkyrie;
 

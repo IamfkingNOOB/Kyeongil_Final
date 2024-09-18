@@ -6,12 +6,15 @@ using UnityEngine;
 /// </summary>
 public class PlayerWeaponSkillState : BasePlayerState
 {
-    // 선입력 관련 변수
-    private float _preInputDelay;
-    private Action _preInput;
+    #region 생성자
 
-    // 생성자
     public PlayerWeaponSkillState(BasePlayerController playerController) : base(playerController) { }
+
+    #endregion 생성자
+
+    #region 함수
+
+    #region 상태 전환 함수
 
     // 상태 진입 시,
     public override void Enter()
@@ -22,10 +25,7 @@ public class PlayerWeaponSkillState : BasePlayerState
     // 상태 유지 시,
     public override void Execute()
     {
-        if (_preInputDelay < _animator.GetCurrentAnimatorStateInfo(0).normalizedTime)
-        {
-            _preInput?.Invoke();
-        }
+
     }
 
     // 상태 탈출 시,
@@ -34,29 +34,42 @@ public class PlayerWeaponSkillState : BasePlayerState
 
     }
 
+    #endregion 상태 전환 함수
+
+    #region 입력 시스템
+
+    // 이동
     public override void OnMove(Vector2 inputVector)
     {
-        _preInput = () => { _playerController.ChangeState(new PlayerMoveState(_playerController)); };
+        _preInputAction = () => { _playerController.ChangeState(new PlayerMoveState(_playerController)); };
     }
 
+    // 회피
     public override void OnEvade()
     {
         // 회피는 선입력 없이 즉시 실행합니다.
         _playerController.ChangeState(new PlayerEvadeState(_playerController));
     }
 
+    // 공격
     public override void OnAttack()
     {
-        _preInput = () => { _playerController.ChangeState(new PlayerAttackState(_playerController)); };
+        _preInputAction = () => { _playerController.ChangeState(new PlayerAttackState(_playerController)); };
     }
 
+    // 무기 스킬
     public override void OnWeaponSkill()
     {
-        // ?
+        _animator.SetTrigger(_weapon_AnimatorHash);
     }
 
+    // 필살기
     public override void OnUltimate()
     {
-        _preInput = () => { _playerController.ChangeState(new PlayerUltimateState(_playerController)); };
+        _preInputAction = () => { _playerController.ChangeState(new PlayerUltimateState(_playerController)); };
     }
+
+    #endregion 입력 시스템
+
+    #endregion 함수
 }

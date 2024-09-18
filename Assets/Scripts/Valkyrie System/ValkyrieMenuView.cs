@@ -132,7 +132,7 @@ public class ValkyrieMenuView : MonoBehaviour
     private void UpdateListItem(ScrollRect scrollRect)
     {
         // 발키리 목록을 가져옵니다.
-        Dictionary<int, Valkyrie> valkyrieList = DataManager.ValkyrieList;
+        Dictionary<int, Valkyrie> valkyrieList = DataManager.Instance.ValkyrieList;
 
         // 발키리 목록을 순회하면서,
         foreach (Valkyrie valkyrie in valkyrieList.Values)

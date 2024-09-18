@@ -8,7 +8,7 @@ public class Singleton<T> where T : new()
         {
             if (instance == null)
             {
-                instance = new T();
+                instance = new();
             }
 
             return instance;

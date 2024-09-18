@@ -94,18 +94,7 @@ public class PlayerMoveState : BasePlayerState
 
         if (isMove) // 회전
         {
-            _playerController.transform.rotation = Quaternion.Slerp(_playerController.transform.rotation, Quaternion.LookRotation(moveVector), 10.0f * Time.deltaTime);
-        }
-    }
-
-    // Standby 상태로의 전환을 확인합니다.
-    private void CheckTransitionToStandby()
-    {
-        // 만약 현재 애니메니이션이 Standby 상태로 전환 중일 경우,
-        if (_animator.GetAnimatorTransitionInfo(0).IsUserName("[Exit] Move -> Standby"))
-        {
-            // Standby 상태에 진입합니다. (Standby 애니메이션은 FSM의 Exit Time 값을 설정하여 직접 전환한다.)
-            _playerController.ChangeState(new PlayerStandbyState(_playerController));
+            _playerController.transform.rotation = Quaternion.Slerp(_playerController.transform.rotation, Quaternion.LookRotation(moveVector), 10.0f * Time.deltaTime * (1.0f / Time.timeScale));
         }
     }
 
